@@ -11,7 +11,7 @@
  Target Server Version : 100410
  File Encoding         : 65001
 
- Date: 30/03/2020 22:46:15
+ Date: 30/03/2020 23:02:04
 */
 
 SET NAMES utf8mb4;
@@ -29,6 +29,13 @@ CREATE TABLE `field_tambahan`  (
 ) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of field_tambahan
+-- ----------------------------
+INSERT INTO `field_tambahan` VALUES ('check-urgent-info', 'Check Urgent Info', '{\"info\":\"\",\"last_check\":\"2020-03-22 20:10:13\"}');
+INSERT INTO `field_tambahan` VALUES ('history-mengerjakan-1-1', 'History pengerjaan tugas', '{\"mulai\":\"2020-03-29 15:51:44\",\"selesai\":\"2020-03-29 16:51:44\",\"uri_string\":\"tugas\\/kerjakan\\/1\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"1\",\"mapel_id\":\"1\",\"pengajar_id\":\"2\",\"type_id\":\"3\",\"judul\":\"UAS\",\"durasi\":\"60\",\"info\":\"Ujian\",\"aktif\":\"1\",\"tgl_buat\":\"2020-03-22 22:59:48\",\"tampil_siswa\":\"1\"},\"unix_id\":\"c10736a3d032fd4246b2ae1431de267e755714\",\"ip\":\"::1\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"pertanyaan_id\":[\"1\"],\"nilai\":0,\"jml_benar\":0,\"jml_salah\":0,\"tgl_submit\":\"2020-03-29 15:52:00\",\"total_waktu\":\"16 detik\"}');
+INSERT INTO `field_tambahan` VALUES ('history-mengerjakan-1-2', 'History pengerjaan tugas', '{\"mulai\":\"2020-03-29 15:56:59\",\"selesai\":\"2020-03-29 16:56:59\",\"uri_string\":\"tugas\\/kerjakan\\/2\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"2\",\"mapel_id\":\"6\",\"pengajar_id\":\"2\",\"type_id\":\"2\",\"judul\":\"UTS\",\"durasi\":\"60\",\"info\":\"asd\",\"aktif\":\"1\",\"tgl_buat\":\"2020-03-22 23:09:55\",\"tampil_siswa\":\"1\"},\"unix_id\":\"10b4950f1941b963b7d6b9a5302140ea883229\",\"ip\":\"::1\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"pertanyaan_id\":[\"3\",\"4\"],\"jawaban\":{\"3\":\"asdasdasdasd\",\"4\":\"asdasdasdasd\"},\"tgl_submit\":\"2020-03-29 15:57:12\",\"total_waktu\":\"13 detik\",\"nilai\":{\"3\":\"91\",\"4\":\"90\"}}');
+
+-- ----------------------------
 -- Table structure for kelas
 -- ----------------------------
 DROP TABLE IF EXISTS `kelas`;
@@ -44,6 +51,25 @@ CREATE TABLE `kelas`  (
 ) ENGINE = MyISAM AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of kelas
+-- ----------------------------
+INSERT INTO `kelas` VALUES (1, 'KELAS X', NULL, 1, 1);
+INSERT INTO `kelas` VALUES (2, 'KELAS X - A', 1, 2, 1);
+INSERT INTO `kelas` VALUES (3, 'KELAS X - B', 1, 3, 1);
+INSERT INTO `kelas` VALUES (4, 'KELAS X - C', 1, 4, 1);
+INSERT INTO `kelas` VALUES (5, 'KELAS X - D', 1, 5, 1);
+INSERT INTO `kelas` VALUES (6, 'KELAS XI', NULL, 6, 1);
+INSERT INTO `kelas` VALUES (7, 'KELAS XI - A', 6, 7, 1);
+INSERT INTO `kelas` VALUES (8, 'KELAS XI - B', 6, 8, 1);
+INSERT INTO `kelas` VALUES (9, 'KELAS XI - C', 6, 9, 1);
+INSERT INTO `kelas` VALUES (10, 'KELAS XI - D', 6, 10, 1);
+INSERT INTO `kelas` VALUES (11, 'KELAS XII', NULL, 11, 1);
+INSERT INTO `kelas` VALUES (12, 'KELAS XII - A', 11, 12, 1);
+INSERT INTO `kelas` VALUES (13, 'KELAS XII - B', 11, 13, 1);
+INSERT INTO `kelas` VALUES (14, 'KELAS XII - C', 11, 14, 1);
+INSERT INTO `kelas` VALUES (15, 'KELAS XII - D', 11, 15, 1);
+
+-- ----------------------------
 -- Table structure for kelas_siswa
 -- ----------------------------
 DROP TABLE IF EXISTS `kelas_siswa`;
@@ -56,6 +82,11 @@ CREATE TABLE `kelas_siswa`  (
   INDEX `kelas_id`(`kelas_id`, `siswa_id`) USING BTREE,
   INDEX `kelas_id_2`(`kelas_id`, `siswa_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+
+-- ----------------------------
+-- Records of kelas_siswa
+-- ----------------------------
+INSERT INTO `kelas_siswa` VALUES (1, 12, 1, 1);
 
 -- ----------------------------
 -- Table structure for komentar
@@ -91,6 +122,13 @@ CREATE TABLE `login`  (
 ) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of login
+-- ----------------------------
+INSERT INTO `login` VALUES (1, 'admin@admin.com', '0192023a7bbd73250516f069df18b500', NULL, 1, 1, NULL);
+INSERT INTO `login` VALUES (2, 'nugraharizki80@gmail.com', '0192023a7bbd73250516f069df18b500', NULL, 2, 0, NULL);
+INSERT INTO `login` VALUES (3, 'nugraharizki80@student.upi.edu', '0192023a7bbd73250516f069df18b500', 1, NULL, 0, NULL);
+
+-- ----------------------------
 -- Table structure for login_log
 -- ----------------------------
 DROP TABLE IF EXISTS `login_log`;
@@ -104,7 +142,39 @@ CREATE TABLE `login_log`  (
   INDEX `login_id`(`login_id`) USING BTREE,
   INDEX `login_id_2`(`login_id`) USING BTREE,
   INDEX `login_id_3`(`login_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of login_log
+-- ----------------------------
+INSERT INTO `login_log` VALUES (1, 1, '2020-03-22 20:10:11', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584882613);
+INSERT INTO `login_log` VALUES (2, 1, '2020-03-22 20:10:36', '{\"is_mobile\":1,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 5.0; SM-G900P Build\\/LRX21T) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1584882543);
+INSERT INTO `login_log` VALUES (3, 1, '2020-03-22 20:52:32', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584885294);
+INSERT INTO `login_log` VALUES (4, 2, '2020-03-22 22:22:40', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584890565);
+INSERT INTO `login_log` VALUES (5, 2, '2020-03-22 22:26:29', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584890673);
+INSERT INTO `login_log` VALUES (6, 3, '2020-03-22 22:26:37', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584891599);
+INSERT INTO `login_log` VALUES (7, 3, '2020-03-22 22:42:07', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584892639);
+INSERT INTO `login_log` VALUES (8, 2, '2020-03-22 22:59:24', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584897526);
+INSERT INTO `login_log` VALUES (9, 2, '2020-03-22 23:10:56', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584893339);
+INSERT INTO `login_log` VALUES (10, 3, '2020-03-22 23:11:02', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584893465);
+INSERT INTO `login_log` VALUES (11, 2, '2020-03-23 09:14:05', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1584929618);
+INSERT INTO `login_log` VALUES (12, 3, '2020-03-29 14:55:59', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585468459);
+INSERT INTO `login_log` VALUES (13, 1, '2020-03-29 15:01:20', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585468774);
+INSERT INTO `login_log` VALUES (14, 2, '2020-03-29 15:01:42', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585475180);
+INSERT INTO `login_log` VALUES (15, 1, '2020-03-29 15:07:49', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585470569);
+INSERT INTO `login_log` VALUES (16, 3, '2020-03-29 15:31:37', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585472235);
+INSERT INTO `login_log` VALUES (17, 2, '2020-03-29 17:45:53', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585482496);
+INSERT INTO `login_log` VALUES (18, 1, '2020-03-29 18:50:35', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585482522);
+INSERT INTO `login_log` VALUES (19, 3, '2020-03-29 18:50:46', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585482707);
+INSERT INTO `login_log` VALUES (20, 2, '2020-03-29 18:53:52', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585483044);
+INSERT INTO `login_log` VALUES (21, 2, '2020-03-30 21:20:11', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585577898);
+INSERT INTO `login_log` VALUES (22, 3, '2020-03-30 21:20:22', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585578861);
+INSERT INTO `login_log` VALUES (23, 3, '2020-03-30 21:36:24', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585579424);
+INSERT INTO `login_log` VALUES (24, 3, '2020-03-30 21:51:19', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585579829);
+INSERT INTO `login_log` VALUES (25, 3, '2020-03-30 21:53:14', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585579877);
+INSERT INTO `login_log` VALUES (26, 3, '2020-03-30 21:53:55', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585582005);
+INSERT INTO `login_log` VALUES (27, 3, '2020-03-30 22:44:00', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585583309);
+INSERT INTO `login_log` VALUES (28, 3, '2020-03-30 22:52:17', '{\"is_mobile\":0,\"browser\":\"Chrome 80.0.3987.149\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/80.0.3987.149 Safari\\/537.36\",\"ip\":\"::1\"}', 1585583990);
 
 -- ----------------------------
 -- Table structure for mapel
@@ -117,6 +187,20 @@ CREATE TABLE `mapel`  (
   `aktif` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1 = ya, 0 = tidak',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of mapel
+-- ----------------------------
+INSERT INTO `mapel` VALUES (1, 'Bahasa Indonesia', NULL, 1);
+INSERT INTO `mapel` VALUES (2, 'Bahasa Inggris', NULL, 1);
+INSERT INTO `mapel` VALUES (3, 'Matematika', NULL, 1);
+INSERT INTO `mapel` VALUES (4, 'Ekonomi', NULL, 1);
+INSERT INTO `mapel` VALUES (5, 'Geografi', NULL, 1);
+INSERT INTO `mapel` VALUES (6, 'Biologi', NULL, 1);
+INSERT INTO `mapel` VALUES (7, 'Penjas', NULL, 1);
+INSERT INTO `mapel` VALUES (8, 'Agama', NULL, 1);
+INSERT INTO `mapel` VALUES (9, 'Fisika', NULL, 1);
+INSERT INTO `mapel` VALUES (10, 'Kimia', NULL, 1);
 
 -- ----------------------------
 -- Table structure for mapel_ajar
@@ -170,6 +254,11 @@ CREATE TABLE `materi`  (
 ) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of materi
+-- ----------------------------
+INSERT INTO `materi` VALUES (1, 3, 2, NULL, 'Logaritma', '<h3><strong>Materi mengenai Logaritma adalah: </strong></h3>\r\n\r\n<ol>\r\n	<li>\r\n	<h3><strong>asdas das dasd asd asd asd </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>asdas dsa as dasd asd asd asd asdas </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>dsa dasd as asd asd asd asd asda sdas dads</strong></h3>\r\n	</li>\r\n</ol>\r\n\r\n<p>Yang bukan logaritma:</p>\r\n\r\n<ul>\r\n	<li>asdasd</li>\r\n	<li>asdasd</li>\r\n	<li>asdasdas</li>\r\n	<li>asdsad</li>\r\n</ul>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<p>&nbsp;</p>\r\n', NULL, '2020-03-29 16:40:41', 1, 3);
+
+-- ----------------------------
 -- Table structure for materi_kelas
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_kelas`;
@@ -181,6 +270,11 @@ CREATE TABLE `materi_kelas`  (
   INDEX `materi_id`(`materi_id`, `kelas_id`) USING BTREE,
   INDEX `materi_id_2`(`materi_id`, `kelas_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+
+-- ----------------------------
+-- Records of materi_kelas
+-- ----------------------------
+INSERT INTO `materi_kelas` VALUES (1, 1, 11);
 
 -- ----------------------------
 -- Table structure for messages
@@ -214,6 +308,12 @@ CREATE TABLE `nilai_tugas`  (
 ) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
+-- Records of nilai_tugas
+-- ----------------------------
+INSERT INTO `nilai_tugas` VALUES (1, 0, 1, 1);
+INSERT INTO `nilai_tugas` VALUES (2, 181, 2, 1);
+
+-- ----------------------------
 -- Table structure for pengajar
 -- ----------------------------
 DROP TABLE IF EXISTS `pengajar`;
@@ -233,6 +333,12 @@ CREATE TABLE `pengajar`  (
 ) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of pengajar
+-- ----------------------------
+INSERT INTO `pengajar` VALUES (1, '123123123123', 'Administrator', 'Laki-laki', 'Bandung', '1980-01-01', 'Bandung', NULL, 1);
+INSERT INTO `pengajar` VALUES (2, '123123123', 'Guru 1', 'Laki-laki', 'Bandung', '1331-01-01', 'Bandung', NULL, 1);
+
+-- ----------------------------
 -- Table structure for pengaturan
 -- ----------------------------
 DROP TABLE IF EXISTS `pengaturan`;
@@ -242,6 +348,26 @@ CREATE TABLE `pengaturan`  (
   `value` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of pengaturan
+-- ----------------------------
+INSERT INTO `pengaturan` VALUES ('email-server', 'Email server', 'no-reply@domain.com');
+INSERT INTO `pengaturan` VALUES ('email-template-approve-pengajar', 'Approve pengajar (email pengajar)', '{\"subject\":\"Pengaktifan Akun\",\"body\":\"<p>Hai {$nama},<\\/p>\\n<p>Anda telah diterima sebagai pengajar pada {$nama_sekolah}, berikut informasi data diri anda:<\\/p>\\n<p>{$tabel_profil}<\\/p>\\n<p>Anda dapat login ke sistem E-Learning menggunakan username dan password yang telah anda buat saat pendaftaran, login pada url berikut : {$url_login}<\\/p>\"}');
+INSERT INTO `pengaturan` VALUES ('email-template-approve-siswa', 'Approve siswa (email siswa)', '{\"subject\":\"Pengaktifan Akun\",\"body\":\"<p>Hai {$nama},<\\/p>\\n<p>Anda telah diterima sebagai siswa pada {$nama_sekolah}, berikut informasi data diri anda:<\\/p>\\n<p>{$tabel_profil}<\\/p>\\n<p>Anda dapat login ke sistem E-Learning menggunakan username dan password yang telah anda buat saat pendaftaran, login pada url berikut : {$url_login}<\\/p>\"}');
+INSERT INTO `pengaturan` VALUES ('email-template-link-reset', 'Link Reset Password', '{\"subject\":\"Reset Password\",\"body\":\"<p>Hai,<\\/p>\\n<p>Anda mengirimkan permintaan untuk reset password anda, klik link berikut untuk memulai reset password : {$link_reset}<\\/p>\"}');
+INSERT INTO `pengaturan` VALUES ('email-template-register-pengajar', 'Register pengajar (email pengajar)', '{\"subject\":\"Registrasi Berhasil\",\"body\":\"<p>Hai {$nama},<\\/p>\\n<p>Terimakasih telah melakukan pendaftaran sebagai pengajar di E-Learning {$nama_sekolah}. Akun anda akan segera diaktifkan oleh admin.<\\/p>\"}');
+INSERT INTO `pengaturan` VALUES ('email-template-register-siswa', 'Register siswa (email siswa)', '{\"subject\":\"Registrasi Berhasil\",\"body\":\"<p>Hai {$nama},<\\/p>\\n<p>Terimakasih telah melakukan pendaftaran sebagai siswa di E-Learning {$nama_sekolah}. Akun anda akan segera diaktifkan oleh admin.<\\/p>\"}');
+INSERT INTO `pengaturan` VALUES ('info-registrasi', 'Info Registrasi', '<p>Silakan mendaftar sebagai siswa atau pengajar (jika anda sebagai pengajar) dengan memilih sesuai tab berikut :</p>');
+INSERT INTO `pengaturan` VALUES ('peraturan-elearning', 'Peraturan E-learning', '');
+INSERT INTO `pengaturan` VALUES ('registrasi-pengajar', 'Registrasi Pengajar', '1');
+INSERT INTO `pengaturan` VALUES ('registrasi-siswa', 'Registrasi Siswa', '1');
+INSERT INTO `pengaturan` VALUES ('versi', 'Versi', '2.0');
+INSERT INTO `pengaturan` VALUES ('jenjang', 'jenjang', 'SMA');
+INSERT INTO `pengaturan` VALUES ('nama-sekolah', 'nama-sekolah', 'SMAN 1 Percobaan');
+INSERT INTO `pengaturan` VALUES ('alamat', 'alamat', 'Bandung');
+INSERT INTO `pengaturan` VALUES ('telp', 'telp', '123123123123');
+INSERT INTO `pengaturan` VALUES ('install-success', 'install-success', '1');
 
 -- ----------------------------
 -- Table structure for pengumuman
@@ -278,6 +404,13 @@ CREATE TABLE `pilihan`  (
 ) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of pilihan
+-- ----------------------------
+INSERT INTO `pilihan` VALUES (1, 1, 'asdasd', 0, 1, 1);
+INSERT INTO `pilihan` VALUES (2, 1, 'dsadsa', 0, 2, 1);
+INSERT INTO `pilihan` VALUES (3, 1, 'dsadas', 1, 3, 1);
+
+-- ----------------------------
 -- Table structure for siswa
 -- ----------------------------
 DROP TABLE IF EXISTS `siswa`;
@@ -297,6 +430,12 @@ CREATE TABLE `siswa`  (
   INDEX `nis`(`nis`, `nama`, `status_id`) USING BTREE,
   INDEX `nis_2`(`nis`, `nama`, `status_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of siswa
+-- ----------------------------
+INSERT INTO `siswa` VALUES (1, '1233212123', 'Rizki Nugraha', 'Laki-laki', 'Bandung', '1331-01-01', 'ISLAM', 'Bandung', 2015, 'siswa-rizki-nugraha-1233212123.jpg', 1);
+INSERT INTO `siswa` VALUES (2, NULL, '', '', '', NULL, NULL, '', 0000, NULL, 0);
 
 -- ----------------------------
 -- Table structure for tugas
@@ -319,6 +458,12 @@ CREATE TABLE `tugas`  (
 ) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tugas
+-- ----------------------------
+INSERT INTO `tugas` VALUES (1, 1, 2, 3, 'UAS', 60, 'Ujian', 1, '2020-03-22 22:59:48', 1);
+INSERT INTO `tugas` VALUES (2, 6, 2, 2, 'UTS', 60, 'asd', 1, '2020-03-22 23:09:55', 1);
+
+-- ----------------------------
 -- Table structure for tugas_kelas
 -- ----------------------------
 DROP TABLE IF EXISTS `tugas_kelas`;
@@ -330,6 +475,12 @@ CREATE TABLE `tugas_kelas`  (
   INDEX `tugas_id`(`tugas_id`, `kelas_id`) USING BTREE,
   INDEX `tugas_id_2`(`tugas_id`, `kelas_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+
+-- ----------------------------
+-- Records of tugas_kelas
+-- ----------------------------
+INSERT INTO `tugas_kelas` VALUES (1, 1, 12);
+INSERT INTO `tugas_kelas` VALUES (3, 2, 12);
 
 -- ----------------------------
 -- Table structure for tugas_pertanyaan
@@ -345,5 +496,13 @@ CREATE TABLE `tugas_pertanyaan`  (
   INDEX `tugas_id`(`tugas_id`) USING BTREE,
   INDEX `tugas_id_2`(`tugas_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tugas_pertanyaan
+-- ----------------------------
+INSERT INTO `tugas_pertanyaan` VALUES (1, 'Coba coba', 1, 1, 1);
+INSERT INTO `tugas_pertanyaan` VALUES (2, 'ayoayoayo', 2, 1, 0);
+INSERT INTO `tugas_pertanyaan` VALUES (3, 'OK?d', 1, 2, 1);
+INSERT INTO `tugas_pertanyaan` VALUES (4, 'oks', 2, 2, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
