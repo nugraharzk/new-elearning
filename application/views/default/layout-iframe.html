@@ -20,11 +20,6 @@
             function inIframe()
             {
                 var is_iframe = true;
-                try {
-                    is_iframe = window.self !== window.top;
-                } catch (e) {
-                    is_iframe = true;
-                }
 
                 if (!is_iframe) {
                     $("#body-content").html('redirect...');

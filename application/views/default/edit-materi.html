@@ -12,7 +12,7 @@ Edit Materi - {{ parent() }}
     <div class="module-body">
         {{ get_flashdata('materi')|raw }}
 
-        {{ form_open_multipart('materi/edit/' ~ type ~ '/' ~ materi.id ~ '/' ~ enurl_redirect(uri_back), {'class' : 'form-horizontal row-fluid'})|raw }}
+        {{ form_open_multipart('materi/edit/' ~ type ~ '/' ~ materi.id , {'class' : 'form-horizontal row-fluid'})|raw }}
             <div class="control-group">
                 <label class="control-label">Judul <span class="text-error">*</span></label>
                 <div class="controls">
@@ -52,6 +52,21 @@ Edit Materi - {{ parent() }}
                 <label class="control-label">Konten <span class="text-error">*</span></label>
                 <div class="controls">
                     <textarea name="konten" id="konten" class="texteditor">{{ set_value('konten', materi.konten)|raw }}</textarea>
+                    <script>
+                        var url = 
+                        ClassicEditor
+                            .create( document.querySelector( '#konten' ), {
+                                ckfinder: {
+                                    uploadUrl: window.location.origin + 'userfiles/files'
+                                }
+                            } )
+                            .then( editor => {
+                                window.editor = editor;
+                            } )
+                            .catch( err => {
+                                console.error( err.stack );
+                            } );
+                    </script>
                     {{ form_error('konten')|raw }}
                 </div>
             </div>

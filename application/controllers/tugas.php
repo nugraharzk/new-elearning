@@ -664,7 +664,7 @@ class Tugas extends MY_Controller
         $data['comp_js']       = get_texteditor();
         $data['no_pertanyaan'] = $this->tugas_model->count_pertanyaan($tugas['id']) + 1;
 
-        /* if ($this->form_validation->run('tugas/pertanyaan') == TRUE) {
+        if ($this->form_validation->run('tugas/pertanyaan') == TRUE) {
             $pertanyaan = $this->input->post('pertanyaan');
 
             $pertanyaan_id = $this->tugas_model->create_pertanyaan(
@@ -675,7 +675,7 @@ class Tugas extends MY_Controller
 
             $this->session->set_flashdata('tugas', get_alert('success', 'Pertanyaan berhasil disimpan.'));
             redirect('tugas/edit_soal/' . $tugas['id'] . '/' . $pertanyaan_id);
-        } */
+        }
 
         // echo "Masuk pa eko";
 

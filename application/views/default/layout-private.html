@@ -26,9 +26,6 @@
                         <ul class="nav pull-right">
                             {% include 'top-mobile-menu.html' %}
 
-                            {% if is_admin() %}
-                            <li><a href="{{ site_url('welcome/get_plugin') }}">PLUGINS</a></li>
-                            {% endif %}
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 {{ nama_panggilan(get_sess_data('user', 'nama')) }}
 
@@ -42,15 +39,15 @@
                                     {% endif %}
 
                                     {% if is_pengajar() %}
-                                    <li>{{ anchor('login/pp', 'Profil & Akun Login')|raw }}</li>
+                                    <li>{{ anchor('pp', 'Profil & Akun Login')|raw }}</li>
                                     {% endif %}
 
                                     {% if is_siswa() %}
-                                    <li>{{ anchor('login/pp', 'Profil & Akun Login')|raw }}</li>
+                                    <li>{{ anchor('pp', 'Profil & Akun Login')|raw }}</li>
                                     {% endif %}
 
-                                    <li><a href="{{ site_url('login/login_log/' ~ get_sess_data('login', 'id')) }}">Login log</a></li>
-                                    <li><a href="{{ site_url('login/logout') }}">Logout</a></li>
+                                    <li><a href="{{ site_url('login_log/' ~ get_sess_data('login', 'id')) }}">Login log</a></li>
+                                    <li><a href="{{ site_url('logout') }}">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>

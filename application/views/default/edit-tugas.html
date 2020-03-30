@@ -12,7 +12,7 @@ Edit Tugas {{ type_label }} - {{ parent() }}
     <div class="module-body">
         {{ get_flashdata('tugas')|raw }}
 
-        {{ form_open_multipart('tugas/edit/' ~ tugas.id ~ '/' ~ enurl_redirect(uri_back), {'class' : 'form-horizontal row-fluid'})|raw }}
+        {{ form_open_multipart('tugas/edit/' ~ tugas.id, {'class' : 'form-horizontal row-fluid'})|raw }}
             <div class="control-group">
                 <label class="control-label">Judul <span class="text-error">*</span></label>
                 <div class="controls">
