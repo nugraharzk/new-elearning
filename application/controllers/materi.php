@@ -975,4 +975,9 @@ class Materi extends MY_Controller
             break;
         }
     }
+
+    public function upload()
+    {
+        echo 'Hello World!';
+    }
 }
