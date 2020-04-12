@@ -53,28 +53,16 @@ class MY_Controller extends CI_Controller
         # load helper
         $this->load->helper(array('url', 'form', 'text', 'elearning', 'security', 'file', 'number', 'date', 'download', 'plugins'));
 
-        $error_install = "Install aplikasi e-learning by Almazari (www.dokumenary.net): " . anchor('setup', "&rarr; Halaman Install");
-        try {
-            check_db_connection();
-        } catch (Exception $e) {
-            echo $error_install;die;
-        }
-
         $this->load->database();
 
         # load library
         $this->load->library(array('session', 'form_validation', 'pager', 'parser', 'image_lib', 'upload', 'twig', 'user_agent', 'email', 'menu'));
 
         # load saja semua model
-        $this->load->model(array('config_model', 'kelas_model', 'login_model', 'mapel_model', 'materi_model', 'pengajar_model', 'siswa_model', 'tugas_model', 'msg_model', 'pengumuman_model', 'komentar_model'));
+        $this->load->model(array('config_model', 'kelas_model', 'login_model', 'mapel_model', 'materi_model', 'orangtua_model', 'pengajar_model', 'siswa_model', 'tugas_model', 'msg_model', 'pengumuman_model', 'komentar_model'));
 
         # delimiters form validation
         $this->form_validation->set_error_delimiters('<span class="text-error"><i class="icon-info-sign"></i> ', '</span>');
-
-        # cek apakah sudah berhasil install
-        if (check_success_install() == false) {
-            echo $error_install;die;
-        }
 
         # jika bukan ajax
         if (!is_ajax()) {

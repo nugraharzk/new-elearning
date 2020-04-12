@@ -25,22 +25,20 @@
         <div class="wrap-content">
             <div class="content">
                 {% if error is not defined %}
+                <div class="row-fluid" style="text-align: center;">
+                    <div class="span4"></div>
+                    <div class="span2">
+                        <a href="#" class="btn btn-success form-control">Teks</a>
+                    </div>
+                    <div class="span2">
+                        <a href="#" class="btn btn-danger">Video</a>
+                    </div>
+                </div>
                     {% if type == 'tertulis' %}
                         {{ materi.konten|raw }}
-                    {% elseif type == 'file' %}
-                        <dl class="dl-horizontal">
-                            <dt>Name</dt>
-                            <dd>{{ (materi.file_info.name is empty) ? 'noname' : materi.file_info.name }}</dd>
-                            <dt>Size</dt>
-                            <dd>{{ byte_format(materi.file_info.size) }}</dd>
-                            <dt>Modified</dt>
-                            <dd>{{ tgl_jam_indo(mdate('%Y-%m-%d %H:%i:%s', materifile_info.date)) }}</dd>
-                            <dt>Mime</dt>
-                            <dd>{{ materi.file_info.mime }}</dd>
-                            <dt></dt>
-                            <dd><br><a href="{{ materi.download_link }}" class="btn btn-warning"><i class="icon-download"></i> Download File</a></dd>
-                        </dl>
                     {% endif %}
+                    <object width="800" height="600" data="{{ 'http://www.youtube.com/v/' ~ materi.youtube_id }}" type="application/x-shockwave-flash">
+                    </object>
 
                     <br>
                     <div class="row-fluid">

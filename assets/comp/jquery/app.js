@@ -199,6 +199,14 @@
                         $(".menu-count-pending-pengajar").html("");
                     }
 
+                    // pending pengajar
+                    if (result.pending_pengajar > 0) {
+                        $(".menu-count-pending-orangtua").html("");
+                        $(".menu-count-pending-orangtua").html('<b class="label orange pull-right">' + result.pending_orangtua + '</b>');
+                    } else {
+                        $(".menu-count-pending-orangtua").html("");
+                    }
+
                     // pending laporan
                     if (result.unread_laporan > 0) {
                         $(".menu-count-unread-laporan").html("");

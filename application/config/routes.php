@@ -11,6 +11,7 @@ $route['lupa_password'] = 'login/lupa_password';
 $route['pp'] = 'login/pp';
 $route['login_log'] = 'login/login_log';
 $route['logout'] = 'login/logout';
+$route['orangtua'] = 'orangtua/index';
 
 
 /* End of file routes.php */

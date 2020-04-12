@@ -25,10 +25,11 @@ class Menu
             ),
             1 => array(
                 '<a href="' . site_url('siswa'). '"><i class="menu-icon icon-group"></i>Siswa <span class="menu-count-pending-siswa"></span></a>',
-                '<a href="' . site_url('pengajar'). '"><i class="menu-icon icon-user"></i>Pengajar <span class="menu-count-pending-pengajar"></span></a>'
+                '<a href="' . site_url('pengajar'). '"><i class="menu-icon icon-user"></i>Pengajar <span class="menu-count-pending-pengajar"></span></a>',
+                '<a href="' . site_url('orangtua'). '"><i class="menu-icon icon-user"></i>Orang Tua <span class="menu-count-pending-orangtua"></span></a>'
             ),
             2 => array(
-                '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Tugas </a>',
+                '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Ujian </a>',
                 '<a href="' . site_url('materi?clear_filter=true') . '"><i class="menu-icon icon-book"></i>Materi </a>',
                 '<a href="' . site_url('materi/komentar') . '"><i class="menu-icon icon-comments"></i>Komentar Materi <span class="menu-count-unread-laporan"></span></a>'
             ),
@@ -58,7 +59,7 @@ class Menu
             ),
             1 => array(
                 '<a href="' . site_url('materi?clear_filter=true') . '"><i class="menu-icon icon-book"></i>Materi </a>',
-                '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Tugas </a>'
+                '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Ujian </a>'
                 // ,
                 // '<a href="' . site_url('materi/komentar') . '"><i class="menu-icon icon-comments"></i>Komentar saya</a>'
             ),
@@ -80,7 +81,7 @@ class Menu
             ),
             1 => array(
                 '<a href="' . site_url('materi?clear_filter=true') . '"><i class="menu-icon icon-book"></i>Materi </a>',
-                '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Tugas </a>'
+                '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Ujian </a>'
                 // ,
                 // '<a href="' . site_url('materi/komentar') . '"><i class="menu-icon icon-comments"></i>Komentar saya </a>'
             ),

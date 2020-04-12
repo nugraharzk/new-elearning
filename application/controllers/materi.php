@@ -202,6 +202,7 @@ class Materi extends MY_Controller
                 $mapel_id = $this->input->post('mapel_id', TRUE);
                 $judul    = $this->input->post('judul', TRUE);
                 $konten   = $this->input->post('konten');
+                $video    = $this->input->post('youtube_id', TRUE);
                 $status   = $this->input->post('status', TRUE);
 
                 $publish = 1;
@@ -223,6 +224,7 @@ class Materi extends MY_Controller
                         $mapel_id,
                         $judul,
                         $konten,
+                        $video,
                         null,
                         $publish
                     );
@@ -234,6 +236,7 @@ class Materi extends MY_Controller
                         $mapel_id,
                         $judul,
                         $konten,
+                        $video,
                         null,
                         $publish
                     );
@@ -387,6 +390,7 @@ class Materi extends MY_Controller
                 $mapel_id = $this->input->post('mapel_id', TRUE);
                 $judul    = $this->input->post('judul', TRUE);
                 $konten   = $this->input->post('konten');
+                $video   = $this->input->post('youtube_id', TRUE);
                 $publish  = $this->input->post('publish', TRUE);
 
                 $this->materi_model->update(
@@ -396,6 +400,7 @@ class Materi extends MY_Controller
                     $mapel_id,
                     $judul,
                     $konten,
+                    $video,
                     null,
                     $publish
                 );

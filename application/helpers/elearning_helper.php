@@ -382,6 +382,23 @@ function is_siswa()
 }
 
 /**
+ * Method untuk ngecek apakah yang login itu orang tua atau bukan
+ * @return boolean
+ */
+function is_orangtua()
+{
+    if (!is_login()) {
+        return false;
+    }
+
+    if (!empty($_SESSION['login_' . APP_PREFIX]['orangtua'])) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * Method untuk mendapatkan data session
  *
  * @param  string $key1
@@ -1258,4 +1275,10 @@ function autoload_function_plugin()
     }
 
     return true;
+}
+
+function output_json($var)
+{
+    header('Content-Type: application/json');
+    echo json_encode($var);
 }

@@ -296,6 +296,7 @@ class Materi_model extends CI_Model
         $mapel_id,
         $judul,
         $konten  = null,
+        $video  = null,
         $file    = null,
         $publish = 1
     ) {
@@ -309,6 +310,7 @@ class Materi_model extends CI_Model
             'mapel_id'    => $mapel_id,
             'judul'       => $judul,
             'konten'      => $konten,
+            'youtube_id'  => $video,
             'file'        => $file,
             'tgl_posting' => date('Y-m-d H:i:s'),
             'publish'     => $publish
@@ -337,6 +339,7 @@ class Materi_model extends CI_Model
         $mapel_id,
         $judul,
         $konten  = null,
+        $video  = null,
         $file    = null,
         $publish = 1
     ) {
@@ -349,6 +352,7 @@ class Materi_model extends CI_Model
             'mapel_id'    => $mapel_id,
             'judul'       => $judul,
             'konten'      => $konten,
+            'youtube_id'  => $video,
             'file'        => $file,
             'tgl_posting' => date('Y-m-d H:i:s'),
             'publish'     => $publish
