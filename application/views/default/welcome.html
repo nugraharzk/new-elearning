@@ -174,7 +174,7 @@
                     {% for m in materi_terbaru %}
                     <tr>
                         <td>
-                            <a href="{{ site_url('materi/detail/' ~ m.id) }}" target="_tab">{{ m.judul }}</a>
+                            <a href="{{ site_url('materi/detail/' ~ m.id ~ '/teks') }}" target="_tab">{{ m.judul }}</a>
                         </td>
                     </tr>
                     {% endfor %}

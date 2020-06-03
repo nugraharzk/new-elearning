@@ -30,7 +30,7 @@
  * DATA OR SOFTWARE PROGRAMS, OR UNAVAILABILITY OR INTERRUPTION OF OPERATIONS.
  */
 
-class Materi extends MY_Controller
+class Rangkuman extends MY_Controller
 {
     function __construct()
     {

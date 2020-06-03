@@ -58,6 +58,7 @@ class Menu
                 // '<a href="' . site_url('pengajar/jadwal') . '"><i class="menu-icon icon-tasks"></i>Jadwal Mengajar </a>'
             ),
             1 => array(
+                '<a href="' . site_url('rangkuman?clear_filter=true') . '"><i class="menu-icon icon-time"></i>Rangkuman Waktu </a>',
                 '<a href="' . site_url('materi?clear_filter=true') . '"><i class="menu-icon icon-book"></i>Materi </a>',
                 '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Ujian </a>'
                 // ,
