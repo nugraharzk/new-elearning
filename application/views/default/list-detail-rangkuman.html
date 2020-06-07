@@ -1,0 +1,111 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Rangkuman Waktu - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+  <div class="module-head">
+    <h3>Rangkuman Waktu</h3>
+  </div>
+  <div class="module-body">
+    {{ get_flashdata('materi')|raw }}
+
+    <center>
+      <h5>Diagram Jumlah Waktu Keseluruhan</h5>
+      <div style="max-width: 400px; max-height: 400px; text-align: center; align-content: center;">
+        <canvas id="myChart" width="300" height="300"></canvas>
+      </div>
+    </center>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Informasi Siswa</th>
+          <th width="15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if siswas is empty %}
+        <tr>
+          <td colspan="2">
+            <center>
+              <h5>
+                Tidak ada data siswa
+              </h5>
+            </center>
+          </td>
+        </tr>
+        {% else %}
+        {% for no, m in siswas %}
+        <tr>
+          <td>
+            <p><strong class="text-warning">
+                {{ m.nama }}
+              </strong></p>
+            <ul class="breadcrumb" style="padding: 0px;background: none;">
+              <li>
+                {{ m.nama_kelas }}
+                <span class="divider">/</span>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <div class="btn-group">
+              <button onclick="modalonclick()" class="btn btn-info btn-md">Cek Ombak</button>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+    <br>
+    {{ pagination|raw }}
+
+  </div>
+</div>
+<script src="{{ jquery }}" type="text/javascript"></script>
+<script src="{{ chartjs }}" type="text/javascript"></script>
+<script type="text/javascript">
+  var teks = "{{ teks.durasi }}";
+  var video = "{{ video.durasi }}";
+  var ctx = document.getElementById('myChart');
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Teks', 'Video'],
+      datasets: [{
+        label: 'Sum of Learning Time',
+        data: [teks, video],
+        backgroundColor: [
+          'green',
+          'red',
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      },
+      // legend: {
+      //   display: true,
+      //   labels: {
+      //     fontColor: 'blue'
+      //   }
+      // }
+    }
+  });
+</script>
+<script>
+  function modalonclick(params) {
+    console.log('masuk')
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Rangkuman Waktu - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>Rangkuman Waktu</h3>
+    </div>
+    <div class="module-body">
+        {{ get_flashdata('materi')|raw }}
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="7%">ID</th>
+                    <th>Informasi Materi</th>
+                    <th width="15%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for no, m in materi %}
+
+                <tr>
+                    <td><b>{{ m.id }}</b></td>
+                    <td>
+                        <p><strong class="text-warning">
+                            {{ m.judul }}
+                        </strong></p>
+                        <ul class="breadcrumb" style="padding: 0px;background: none;">
+                            <li>
+                                {{ (m.publish == 1) ? '<span class="label label-success">Terbit</span>' : '<span class="label label-warning">Konsep</span>' }}
+                                <span class="divider">/</span>
+                            </li>
+                            <li>
+                                {{ m.mapel.nama }}
+                                <span class="divider">/</span>
+                            </li>
+                            <li>
+                                {% for mk in m.materi_kelas %}
+                                    {{ mk.nama }}&nbsp;
+                                {% endfor %}
+                                <span class="divider">/</span>
+                            </li>
+                            <li>
+                                {% if is_pengajar() == false %}
+                                    Pembuat <a href="{{ m.pembuat.link_profil }}">{{ m.pembuat.nama }}</a>
+                                    , {{ tgl_jam_indo(m.tgl_posting) }}
+                                {% else %}
+                                    Dibuat {{ tgl_jam_indo(m.tgl_posting) }}
+                                {% endif %}
+                                <span class="divider">/</span>
+                            </li>
+                            <li>
+                                {{ (m.file is empty) ? 'Dibaca' : 'Diunduh' }}
+                                {{ m.views }} kali
+                                <span class="divider">/</span>
+                            </li>
+                            <li>
+                                {{ m.jml_komentar }} Komentar
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            {{ anchor('rangkuman/detail/' ~ m.id, '<i class="icon-zoom-in"></i> Detail', {'class' : 'btn btn-default btn-small'})|raw }}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        {{ pagination|raw }}
+
+    </div>
+</div>
+{% endblock %}
