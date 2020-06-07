@@ -1,100 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>{% block title %}{{ site_name }}{% endblock %}</title>
-        {% include 'layout-header.html' %}
-        {% block css %}{% endblock %}
-    </head>
 
-    <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i>
-                    </a>
-                    <a class="brand" href="{{ site_url }}">
-                        <img src="{{ get_logo_config() }}"> <span class="visible-phone brand-txt">e-Learning</span><span class="visible-desktop visible-tablet brand-txt">{{ site_name }}</span>
-                    </a>
-                    <div class="nav-collapse collapse navbar-inverse-collapse">
-                        <form class="navbar-search pull-left input-append" method="get" action="{{ site_url('welcome/search') }}">
-                            <input type="text" class="span3" name="q">
-                            <button class="btn" type="submit">
-                                <i class="icon-search"></i>
-                            </button>
-                        </form>
-                        <ul class="nav pull-right">
-                            {% include 'top-mobile-menu.html' %}
+<head>
+    <title>{% block title %}{{ site_name }}{% endblock %}</title>
+    {% include 'layout-header.html' %}
+    {% block css %}{% endblock %}
+</head>
 
-                            <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i>
+                </a>
+                <a class="brand" href="{{ site_url }}">
+                    <img src="{{ get_logo_config() }}"> <span class="visible-phone brand-txt">e-Learning</span><span
+                        class="visible-desktop visible-tablet brand-txt">{{ site_name }}</span>
+                </a>
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+                    <form class="navbar-search pull-left input-append" method="get"
+                        action="{{ site_url('welcome/search') }}">
+                        <input type="text" class="span3" name="q">
+                        <button class="btn" type="submit">
+                            <i class="icon-search"></i>
+                        </button>
+                    </form>
+                    <ul class="nav pull-right">
+                        {% include 'top-mobile-menu.html' %}
+
+                        <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 {{ nama_panggilan(get_sess_data('user', 'nama')) }}
 
                                 <span class="pull-right">
-                                <img src="{{ get_url_image_session(get_sess_data('user', 'foto'), 'medium', get_sess_data('user', 'jenis_kelamin')) }}" class="nav-avatar img-polaroid" />
-                                <b class="caret"></b></a>
-                                </span>
-                                <ul class="dropdown-menu">
-                                    {% if is_admin() %}
-                                    <li>{{ anchor('pengajar/detail/'~ get_sess_data('user', 'status_id') ~'/' ~ get_sess_data('user', 'id'), 'Detail Profil', {'title' : 'Detail Profil'})|raw }}</li>
-                                    {% endif %}
+                                    <img src="{{ get_url_image_session(get_sess_data('user', 'foto'), 'medium', get_sess_data('user', 'jenis_kelamin')) }}"
+                                        class="nav-avatar img-polaroid" />
+                                    <b class="caret"></b></a>
+                            </span>
+                            <ul class="dropdown-menu">
+                                {% if is_admin() %}
+                                <li>{{ anchor('pengajar/detail/'~ get_sess_data('user', 'status_id') ~'/' ~ get_sess_data('user', 'id'), 'Detail Profil', {'title' : 'Detail Profil'})|raw }}
+                                </li>
+                                {% endif %}
 
-                                    {% if is_pengajar() %}
-                                    <li>{{ anchor('pp', 'Profil & Akun Login')|raw }}</li>
-                                    {% endif %}
+                                {% if is_pengajar() %}
+                                <li>{{ anchor('pp', 'Profil & Akun Login')|raw }}</li>
+                                {% endif %}
 
-                                    {% if is_siswa() %}
-                                    <li>{{ anchor('pp', 'Profil & Akun Login')|raw }}</li>
-                                    {% endif %}
+                                {% if is_siswa() %}
+                                <li>{{ anchor('pp', 'Profil & Akun Login')|raw }}</li>
+                                {% endif %}
 
-                                    <li><a href="{{ site_url('login_log/' ~ get_sess_data('login', 'id')) }}">Login log</a></li>
-                                    <li><a href="{{ site_url('logout') }}">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                                <li><a href="{{ site_url('login_log/' ~ get_sess_data('login', 'id')) }}">Login log</a>
+                                </li>
+                                <li><a href="{{ site_url('logout') }}">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+
+    <!-- /navbar -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span3 visible-desktop">
+                    <div class="sidebar">
+                        {% include 'sidebar-menu.html' %}
                     </div>
-                    <!-- /.nav-collapse -->
+                    <!--/.sidebar-->
+                </div>
+                <!--/.span3-->
+                <div class="span9 mobile-12">
+                    <div class="content">
+                        {% if pass_siswa_equal_nis() == true %}
+                        {{ get_alert('warning', "Dimohon untuk segera mengganti password anda untuk alasan keamanan. " ~ anchor('login/pp?show=edit-password', 'Ganti Password'))|raw }}
+                        {% endif %}
+
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+                <!--/.span9-->
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+    <div class="footer">
+        <div class="container">
+            <center>
+                <b class="copyright">{{ copyright|raw }} </b> All rights reserved.<br>
+                {{ version|raw }} | Page loaded in {{ elapsed_time }} seconds.
+            </center>
+        </div>
+    </div>
+
+    {% include 'layout-footer.html' %}
+    {% block js %}
+    <script src="{{ chartjs }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        var teks = "{{ teks.durasi }}";
+        var video = "{{ video.durasi }}";
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Teks', 'Video'],
+                datasets: [{
+                    label: 'Sum of Learning Time',
+                    data: [teks, video],
+                    backgroundColor: [
+                        'green',
+                        'red',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <script>
+        function modalonclick(id) {
+            var baseUrl = "{{ base_url }}";
+            var materiId = "{{ materi.id }}";
+            var teks1 = 0;
+            var video1 = 0;
+            var url = baseUrl + 'rangkuman/getrow/' + id + '/' + materiId
+            console.log(url)
+            $.get(url, function (res) {
+                teks1 = res.teks.durasi
+                video1 = res.video.durasi
+                var cts = document.getElementById('detailChart');
+                var myChart = new Chart(cts, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Teks', 'Video'],
+                        datasets: [{
+                            label: 'Sum of Learning Time',
+                            data: [teks1, video1],
+                            backgroundColor: [
+                                'green',
+                                'red',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                $('#exampleModal').appendTo("body").modal('show')
+                $('#exampleModal').css('zIndex', '2');
+                $('.modal-backdrop').css('zIndex', '1');
+            });
+        }
+    </script>
+    {% endblock %}
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="z-index: -1;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="namaSiswa">Detail Waktu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <div style="max-width: 400px; max-height: 400px; text-align: center; align-content: center;">
+                            <canvas id="detailChart" width="300" height="300"></canvas>
+                        </div>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 </div>
             </div>
-            <!-- /navbar-inner -->
         </div>
+    </div>
+</body>
 
-        <!-- /navbar -->
-        <div class="wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="span3 visible-desktop">
-                        <div class="sidebar">
-                            {% include 'sidebar-menu.html' %}
-                        </div>
-                        <!--/.sidebar-->
-                    </div>
-                    <!--/.span3-->
-                    <div class="span9 mobile-12">
-                        <div class="content">
-                            {% if pass_siswa_equal_nis() == true %}
-                                {{ get_alert('warning', "Dimohon untuk segera mengganti password anda untuk alasan keamanan. " ~ anchor('login/pp?show=edit-password', 'Ganti Password'))|raw }}
-                            {% endif %}
-
-                            {% block content %}{% endblock %}
-                        </div>
-                    </div>
-                    <!--/.span9-->
-                </div>
-            </div>
-            <!--/.container-->
-        </div>
-        <!--/.wrapper-->
-        <div class="footer">
-            <div class="container">
-                <center>
-                    <b class="copyright">{{ copyright|raw }} </b> All rights reserved.<br>
-                    {{ version|raw }} | Page loaded in {{ elapsed_time }} seconds.
-                </center>
-            </div>
-        </div>
-
-        {% include 'layout-footer.html' %}
-        {% block js %}{% endblock %}
-
-    </body>
 </html>

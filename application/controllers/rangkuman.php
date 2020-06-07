@@ -175,7 +175,7 @@ class Rangkuman extends MY_Controller
         $this->twig->display('list-rangkuman.html', $data);
     }
 
-    function detail($segment_3 = '', $segment_4 = '', $segment_5 = '')
+    function detail($segment_3 = '')
     {
         $materi_id = (int)$segment_3;
 
@@ -210,7 +210,7 @@ class Rangkuman extends MY_Controller
             base_url('assets/comp/colorbox/colorbox.css')
         ));
 
-        $data['siswas'] = $this->db->select('a.*, b.nama, d.nama as nama_kelas')
+        $data['siswas'] = $this->db->select('a.*, b.nama, b.nis, d.nama as nama_kelas')
                                    ->where('a.materi_id', $data['materi']['id'])
                                    ->group_by('a.siswa_id')
                                    ->join('siswa b', 'b.id=a.siswa_id')
@@ -233,6 +233,25 @@ class Rangkuman extends MY_Controller
         // $this->tampilkan($data);
 
         $this->twig->display('list-detail-rangkuman.html', $data);
+    }
+
+    public function getrow($id, $materiId)
+    {
+        $data['teks'] = $this->db->select_sum('durasi')
+                         ->where('siswa_id', $id)
+                         ->where('materi_id', $materiId)
+                         ->where('tipe', 'teks')
+                         ->get('log_belajar')
+                         ->row();
+        $data['video'] = $this->db->select_sum('durasi')
+                         ->where('siswa_id', $id)
+                         ->where('materi_id', $materiId)
+                         ->where('tipe', 'video')
+                         ->get('log_belajar')
+                         ->row();
+        $data['teks'] = $data['teks']->durasi !== null ? $data['teks'] : 0;
+        $data['video'] = $data['video']->durasi !== null ? $data['video'] : 0;
+        $this->tampilkan($data);
     }
 
     public function tampilkan($data)

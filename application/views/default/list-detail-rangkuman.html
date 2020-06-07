@@ -5,6 +5,9 @@ Rangkuman Waktu - {{ parent() }}
 {% endblock %}
 
 {% block content %}
+{{ anchor('rangkuman', '<i class="icon-chevron-left"></i> Kembali', {'class' : 'btn btn-primary btn-md'})|raw }}
+<br />
+<br />
 <div class="module">
   <div class="module-head">
     <h3>Rangkuman Waktu</h3>
@@ -19,17 +22,21 @@ Rangkuman Waktu - {{ parent() }}
       </div>
     </center>
 
+    <br />
+
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Informasi Siswa</th>
-          <th width="15%"></th>
+          <th>NIS</th>
+          <th>Nama Siswa</th>
+          <th>Kelas</th>
+          <th width="15%">Aksi</th>
         </tr>
       </thead>
       <tbody>
         {% if siswas is empty %}
         <tr>
-          <td colspan="2">
+          <td colspan="4">
             <center>
               <h5>
                 Tidak ada data siswa
@@ -40,20 +47,18 @@ Rangkuman Waktu - {{ parent() }}
         {% else %}
         {% for no, m in siswas %}
         <tr>
+          <td>{{ m.nis }}</td>
           <td>
             <p><strong class="text-warning">
                 {{ m.nama }}
               </strong></p>
-            <ul class="breadcrumb" style="padding: 0px;background: none;">
-              <li>
-                {{ m.nama_kelas }}
-                <span class="divider">/</span>
-              </li>
-            </ul>
+          </td>
+          <td>
+            {{ m.nama_kelas }}
           </td>
           <td>
             <div class="btn-group">
-              <button onclick="modalonclick()" class="btn btn-info btn-md">Cek Ombak</button>
+              <button onclick="modalonclick({{ m.siswa_id }})" class="btn btn-info btn-md">Lihat Detail</button>
             </div>
           </td>
         </tr>
@@ -66,46 +71,5 @@ Rangkuman Waktu - {{ parent() }}
 
   </div>
 </div>
-<script src="{{ jquery }}" type="text/javascript"></script>
-<script src="{{ chartjs }}" type="text/javascript"></script>
-<script type="text/javascript">
-  var teks = "{{ teks.durasi }}";
-  var video = "{{ video.durasi }}";
-  var ctx = document.getElementById('myChart');
-  var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Teks', 'Video'],
-      datasets: [{
-        label: 'Sum of Learning Time',
-        data: [teks, video],
-        backgroundColor: [
-          'green',
-          'red',
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      },
-      // legend: {
-      //   display: true,
-      //   labels: {
-      //     fontColor: 'blue'
-      //   }
-      // }
-    }
-  });
-</script>
-<script>
-  function modalonclick(params) {
-    console.log('masuk')
-  }
-</script>
+
 {% endblock %}
