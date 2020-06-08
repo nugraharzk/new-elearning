@@ -94,6 +94,18 @@ class Menu
             // 3 => array(
             )
         );
+
+        $this->menus['orangtua'] = array(
+            0 => array(
+                '<a href="' . site_url() . '"><i class="menu-icon icon-home"></i>Beranda</a>'
+            ),
+            1 => array(
+                '<a href="' . site_url('rangkuman') . '"><i class="menu-icon icon-time"></i>Rangkuman Belajar Anak </a>'
+            ),
+            2 => array(
+                '<a href="' . site_url('logout') . '"><i class="menu-icon icon-signout"></i>Logout </a>'
+            )
+        );
     }
 
     public function add($rule, $index, $link)
@@ -107,6 +119,8 @@ class Menu
             return $this->menus['admin'];
         } elseif (is_pengajar()) {
             return $this->menus['pengajar'];
+        } elseif (is_orangtua()) {
+            return $this->menus['orangtua'];
         } elseif (is_siswa()) {
             return $this->menus['siswa'];
         }

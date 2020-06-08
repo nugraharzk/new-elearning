@@ -84,6 +84,22 @@ class MY_Controller extends CI_Controller
                 # cek sedang ujian tidak
                 $this->cek_mode_ujian();
             }
+
+            if (is_orangtua()) {
+                # jika kelas aktifnya kosong, sebaiknya di die jasa
+                $kelas_aktif = $this->kelas_model->retrieve_siswa(null, array(
+                    'siswa_id' => get_sess_data('user', 'id'),
+                    'aktif'    => 1
+                ));
+                if (empty($kelas_aktif)) {
+                    exit('Kelas aktif anda tidak ditemukan, segera hubungi admin e-learning.');
+                }
+
+                $this->siswa_kelas_aktif = $kelas_aktif;
+
+                # cek sedang ujian tidak
+                // $this->cek_mode_ujian();
+            }
         }
 
         # cek versi

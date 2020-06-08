@@ -85,6 +85,14 @@ class Welcome extends MY_Controller
             );
         }
 
+        if (is_orangtua()) {
+            $where_pengumuman = array(
+                'tgl_tampil <='   => date('Y-m-d'),
+                'tgl_tutup >='    => date('Y-m-d'),
+                'tampil_pengajar' => 1
+            );
+        }
+
         if (is_admin()) {
             $data['jml_siswa']            = $this->siswa_model->count('total');
             $data['jml_siswa_pending']    = $this->siswa_model->count('pending');

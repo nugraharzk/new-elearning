@@ -136,6 +136,15 @@ class Rangkuman extends MY_Controller
         }
         $data['filter'] = $filter;
 
+        if (is_orangtua()) {
+            $kelas_aktif = $this->siswa_kelas_aktif;
+            $retrieve_kelas = $this->kelas_model->retrieve($kelas_aktif['kelas_id']);
+
+            // # ambil parentnya
+            $filter['kelas_id'] = array($retrieve_kelas['parent_id']);
+            // $filter['siswa_id'] = get_sess_data('user', 'id');
+        }
+
         # jika sebagai pengajar tampilkan materi miliknya saja
         if (is_pengajar()) {
             $filter['pengajar_id'] = get_sess_data('user', 'id');
@@ -172,6 +181,8 @@ class Rangkuman extends MY_Controller
         $data['kelas']       = $this->kelas_model->retrieve_all(null, array('aktif' => 1));
         $data['mapel']       = $this->mapel_model->retrieve_all_mapel();
 
+        // $this->tampilkan($_SESSION['login_' . APP_PREFIX]);
+        // $this->tampilkan($results);
         $this->twig->display('list-rangkuman.html', $data);
     }
 
@@ -197,6 +208,7 @@ class Rangkuman extends MY_Controller
             show_404();
         }
 
+        
         # setup texteditor
         $html_js = get_texteditor();
 
@@ -209,7 +221,7 @@ class Rangkuman extends MY_Controller
         $data['comp_css'] = load_comp_css(array(
             base_url('assets/comp/colorbox/colorbox.css')
         ));
-
+        
         $data['siswas'] = $this->db->select('a.*, b.nama, b.nis, d.nama as nama_kelas')
                                    ->where('a.materi_id', $data['materi']['id'])
                                    ->group_by('a.siswa_id')
@@ -218,10 +230,18 @@ class Rangkuman extends MY_Controller
                                    ->join('kelas d', 'd.id=c.id')
                                    ->get('log_belajar a')
                                    ->result();
-
+                                   
         $data['materi']['siswa_id'] = get_sess_data('user','id');
-        $data['teks'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'teks')->get('log_belajar')->row();
-        $data['video'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'video')->get('log_belajar')->row();
+        if (is_orangtua()) {
+            $data['is_orangtua'] = true;
+            $data['teks'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'teks')->where('siswa_id', $data['materi']['siswa_id'])->get('log_belajar')->row();
+            $data['video'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'video')->where('siswa_id', $data['materi']['siswa_id'])->get('log_belajar')->row();
+        }
+        if (is_pengajar()) {
+            $data['is_orangtua'] = false;
+            $data['teks'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'teks')->get('log_belajar')->row();
+            $data['video'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'video')->get('log_belajar')->row();
+        }
 
         $data['teks'] = $data['teks']->durasi !== null ? $data['teks'] : 0;
         $data['video'] = $data['video']->durasi !== null ? $data['video'] : 0;

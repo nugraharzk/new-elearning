@@ -230,6 +230,7 @@ class Login_model extends CI_Model
         $siswa_id    = null,
         $pengajar_id = null,
         $is_admin    = null,
+        $is_orangtua = null,
         $reset_kode  = null
     ) {
         if (!is_null($id)) {
@@ -253,6 +254,10 @@ class Login_model extends CI_Model
         if (!is_null($is_admin)) {
             $is_admin = (int)$is_admin;
             $this->db->where('is_admin', $is_admin);
+        }
+        if (!is_null($is_orangtua)) {
+            $is_orangtua = (int)$is_orangtua;
+            $this->db->where('is_orangtua', $is_orangtua);
         }
         if (!is_null($reset_kode)) {
             $this->db->where('reset_kode', $reset_kode);

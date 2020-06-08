@@ -10,7 +10,7 @@ Rangkuman Waktu - {{ parent() }}
 <br />
 <div class="module">
   <div class="module-head">
-    <h3>Rangkuman Waktu</h3>
+    <h3>Rangkuman Waktu Materi {{ materi.judul }}</h3>
   </div>
   <div class="module-body">
     {{ get_flashdata('materi')|raw }}
@@ -24,6 +24,7 @@ Rangkuman Waktu - {{ parent() }}
 
     <br />
 
+    {% if is_orangtua == FALSE %}
     <table class="table table-striped">
       <thead>
         <tr>
@@ -66,6 +67,7 @@ Rangkuman Waktu - {{ parent() }}
         {% endif %}
       </tbody>
     </table>
+    {% endif %}
     <br>
     {{ pagination|raw }}
 

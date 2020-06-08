@@ -418,6 +418,9 @@ function get_sess_data($key1, $key2)
         if (is_siswa()) {
             $type = 'siswa';
         }
+        if (is_orangtua()) {
+            $type = 'orangtua';
+        }
 
         if (!empty($type)) {
             return $_SESSION['login_' . APP_PREFIX][$type][$key1][$key2];
