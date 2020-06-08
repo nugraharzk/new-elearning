@@ -11,7 +11,7 @@
  Target Server Version : 100410
  File Encoding         : 65001
 
- Date: 04/06/2020 01:59:21
+ Date: 09/06/2020 01:07:55
 */
 
 SET NAMES utf8mb4;
@@ -123,17 +123,24 @@ CREATE TABLE `log_belajar`  (
   `tipe` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of log_belajar
 -- ----------------------------
-INSERT INTO `log_belajar` VALUES (1, 1, 2, 1, 'video', '2020-06-04 01:49:46.987476');
-INSERT INTO `log_belajar` VALUES (2, 1, 2, 15, 'teks', '2020-06-04 01:50:03.964896');
-INSERT INTO `log_belajar` VALUES (3, 1, 2, 10, 'video', '2020-06-04 01:50:18.060976');
-INSERT INTO `log_belajar` VALUES (4, 1, 2, 28, 'teks', '2020-06-04 01:50:48.208264');
-INSERT INTO `log_belajar` VALUES (5, 1, 2, 8, 'video', '2020-06-04 01:50:58.461279');
-INSERT INTO `log_belajar` VALUES (6, 1, 2, 10, 'video', '2020-06-04 01:51:00.825964');
+INSERT INTO `log_belajar` VALUES (24, 4, 2, 2, 'teks', '2020-06-06 01:35:37.461702');
+INSERT INTO `log_belajar` VALUES (25, 4, 2, 3, 'video', '2020-06-06 01:35:43.698871');
+INSERT INTO `log_belajar` VALUES (26, 4, 2, 157, 'video', '2020-06-06 01:38:17.509366');
+INSERT INTO `log_belajar` VALUES (27, 4, 2, 159, 'video', '2020-06-06 01:38:19.742314');
+INSERT INTO `log_belajar` VALUES (28, 4, 2, 10, 'teks', '2020-06-06 01:38:30.987611');
+INSERT INTO `log_belajar` VALUES (29, 4, 2, 11, 'video', '2020-06-06 01:38:44.450217');
+INSERT INTO `log_belajar` VALUES (30, 4, 2, 14, 'video', '2020-06-06 01:38:47.829523');
+INSERT INTO `log_belajar` VALUES (31, 4, 2, 9, 'video', '2020-06-06 01:39:44.242545');
+INSERT INTO `log_belajar` VALUES (32, 4, 2, 6, 'video', '2020-06-06 01:40:03.720431');
+INSERT INTO `log_belajar` VALUES (33, 4, 2, 12, 'video', '2020-06-06 01:40:42.382972');
+INSERT INTO `log_belajar` VALUES (34, 4, 2, 8, 'video', '2020-06-06 01:44:20.645087');
+INSERT INTO `log_belajar` VALUES (35, 4, 2, 20, 'video', '2020-06-06 01:45:29.751908');
+INSERT INTO `log_belajar` VALUES (36, 3, 1, 12, 'teks', '2020-06-08 01:12:39.184737');
 
 -- ----------------------------
 -- Table structure for login
@@ -151,7 +158,7 @@ CREATE TABLE `login`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`, `siswa_id`, `pengajar_id`) USING BTREE,
   INDEX `username_2`(`username`, `siswa_id`, `pengajar_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of login
@@ -160,6 +167,8 @@ INSERT INTO `login` VALUES (1, 'admin@email.com', '0192023a7bbd73250516f069df18b
 INSERT INTO `login` VALUES (2, 'guru1@email.com', '0192023a7bbd73250516f069df18b500', NULL, 2, 0, 0, NULL);
 INSERT INTO `login` VALUES (3, 'siswa1@email.com', '0192023a7bbd73250516f069df18b500', 1, NULL, 0, 0, NULL);
 INSERT INTO `login` VALUES (4, 'siswa2@email.com', '0192023a7bbd73250516f069df18b500', 2, NULL, 0, 0, NULL);
+INSERT INTO `login` VALUES (5, 'guru2@email.com', '0192023a7bbd73250516f069df18b500', NULL, 3, 0, 0, NULL);
+INSERT INTO `login` VALUES (6, 'orangtua1@email.com', '0192023a7bbd73250516f069df18b500', 2, NULL, 0, 1, NULL);
 
 -- ----------------------------
 -- Table structure for login_log
@@ -175,7 +184,7 @@ CREATE TABLE `login_log`  (
   INDEX `login_id`(`login_id`) USING BTREE,
   INDEX `login_id_2`(`login_id`) USING BTREE,
   INDEX `login_id_3`(`login_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 95 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 143 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of login_log
@@ -274,6 +283,54 @@ INSERT INTO `login_log` VALUES (91, 4, '2020-06-04 01:38:42', '{\"is_mobile\":0,
 INSERT INTO `login_log` VALUES (92, 4, '2020-06-04 01:38:52', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591210299);
 INSERT INTO `login_log` VALUES (93, 3, '2020-06-04 01:53:44', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591210329);
 INSERT INTO `login_log` VALUES (94, 2, '2020-06-04 01:54:15', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591210657);
+INSERT INTO `login_log` VALUES (95, 2, '2020-06-04 22:33:12', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591286861);
+INSERT INTO `login_log` VALUES (96, 3, '2020-06-04 23:09:45', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591290619);
+INSERT INTO `login_log` VALUES (97, 2, '2020-06-05 00:12:25', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591292302);
+INSERT INTO `login_log` VALUES (98, 3, '2020-06-05 00:40:27', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591292408);
+INSERT INTO `login_log` VALUES (99, 1, '2020-06-05 00:42:28', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591292435);
+INSERT INTO `login_log` VALUES (100, 1, '2020-06-05 00:42:40', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591292560);
+INSERT INTO `login_log` VALUES (101, 2, '2020-06-05 00:44:47', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591292989);
+INSERT INTO `login_log` VALUES (102, 1, '2020-06-05 00:52:01', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591293051);
+INSERT INTO `login_log` VALUES (103, 4, '2020-06-05 00:52:57', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591293469);
+INSERT INTO `login_log` VALUES (104, 2, '2020-06-06 01:28:09', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591381846);
+INSERT INTO `login_log` VALUES (105, 5, '2020-06-06 01:30:40', '{\"is_mobile\":0,\"browser\":\"Firefox 76.0\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko\\/20100101 Firefox\\/76.0\",\"ip\":\"127.0.0.1\"}', 1591381949);
+INSERT INTO `login_log` VALUES (106, 3, '2020-06-06 01:32:51', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591382553);
+INSERT INTO `login_log` VALUES (107, 4, '2020-06-06 01:34:38', '{\"is_mobile\":0,\"browser\":\"Firefox 76.0\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko\\/20100101 Firefox\\/76.0\",\"ip\":\"127.0.0.1\"}', 1591382729);
+INSERT INTO `login_log` VALUES (108, 3, '2020-06-06 01:44:36', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591382689);
+INSERT INTO `login_log` VALUES (109, 2, '2020-06-07 22:52:05', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591545055);
+INSERT INTO `login_log` VALUES (110, 5, '2020-06-07 22:53:00', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591545183);
+INSERT INTO `login_log` VALUES (111, 5, '2020-06-07 23:09:21', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591546220);
+INSERT INTO `login_log` VALUES (112, 2, '2020-06-07 23:21:05', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591546903);
+INSERT INTO `login_log` VALUES (113, 2, '2020-06-07 23:22:10', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591547068);
+INSERT INTO `login_log` VALUES (114, 2, '2020-06-07 23:24:47', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591547407);
+INSERT INTO `login_log` VALUES (115, 2, '2020-06-07 23:31:41', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591548271);
+INSERT INTO `login_log` VALUES (116, 2, '2020-06-07 23:47:07', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591548431);
+INSERT INTO `login_log` VALUES (117, 2, '2020-06-07 23:47:52', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591548727);
+INSERT INTO `login_log` VALUES (118, 2, '2020-06-07 23:52:40', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591548849);
+INSERT INTO `login_log` VALUES (119, 2, '2020-06-07 23:54:29', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591548895);
+INSERT INTO `login_log` VALUES (120, 2, '2020-06-07 23:55:03', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591548940);
+INSERT INTO `login_log` VALUES (121, 2, '2020-06-07 23:55:44', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591549309);
+INSERT INTO `login_log` VALUES (122, 2, '2020-06-08 00:02:03', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591549355);
+INSERT INTO `login_log` VALUES (123, 2, '2020-06-08 00:02:53', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591549359);
+INSERT INTO `login_log` VALUES (124, 5, '2020-06-08 00:04:44', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591549688);
+INSERT INTO `login_log` VALUES (125, 2, '2020-06-08 00:10:12', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591549746);
+INSERT INTO `login_log` VALUES (126, 2, '2020-06-08 00:11:08', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591549870);
+INSERT INTO `login_log` VALUES (127, 2, '2020-06-08 00:11:31', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 5.0; SM-G900P Build\\/LRX21T) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591549897);
+INSERT INTO `login_log` VALUES (128, 2, '2020-06-08 00:12:47', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591550195);
+INSERT INTO `login_log` VALUES (129, 2, '2020-06-08 00:17:49', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 5.0; SM-G900P Build\\/LRX21T) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591550301);
+INSERT INTO `login_log` VALUES (130, 2, '2020-06-08 00:19:40', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 6.0; Nexus 5 Build\\/MRA58N) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591550395);
+INSERT INTO `login_log` VALUES (131, 2, '2020-06-08 00:20:36', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591550724);
+INSERT INTO `login_log` VALUES (132, 2, '2020-06-08 00:25:30', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 5.0; SM-G900P Build\\/LRX21T) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591551904);
+INSERT INTO `login_log` VALUES (133, 2, '2020-06-08 00:45:19', '{\"is_mobile\":1,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (Linux; Android 5.0; SM-G900P Build\\/LRX21T) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Mobile Safari\\/537.36\",\"ip\":\"::1\"}', 1591552134);
+INSERT INTO `login_log` VALUES (134, 2, '2020-06-08 00:49:26', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591552074);
+INSERT INTO `login_log` VALUES (135, 6, '2020-06-08 01:02:32', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591554578);
+INSERT INTO `login_log` VALUES (136, 6, '2020-06-08 01:31:41', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591554803);
+INSERT INTO `login_log` VALUES (137, 6, '2020-06-09 00:19:52', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591637498);
+INSERT INTO `login_log` VALUES (138, 4, '2020-06-09 00:21:08', '{\"is_mobile\":0,\"browser\":\"Firefox 77.0\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko\\/20100101 Firefox\\/77.0\",\"ip\":\"127.0.0.1\"}', 1591637223);
+INSERT INTO `login_log` VALUES (139, 5, '2020-06-09 00:33:43', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591637516);
+INSERT INTO `login_log` VALUES (140, 6, '2020-06-09 00:34:03', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591638040);
+INSERT INTO `login_log` VALUES (141, 2, '2020-06-09 00:38:45', '{\"is_mobile\":0,\"browser\":\"Firefox 77.0\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko\\/20100101 Firefox\\/77.0\",\"ip\":\"127.0.0.1\"}', 1591639154);
+INSERT INTO `login_log` VALUES (142, 6, '2020-06-09 00:42:42', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.61\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.61 Safari\\/537.36\",\"ip\":\"::1\"}', 1591639471);
 
 -- ----------------------------
 -- Table structure for mapel
@@ -353,14 +410,15 @@ CREATE TABLE `materi`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `mapel_id`(`mapel_id`, `pengajar_id`, `siswa_id`) USING BTREE,
   INDEX `mapel_id_2`(`mapel_id`, `pengajar_id`, `siswa_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of materi
 -- ----------------------------
-INSERT INTO `materi` VALUES (1, 3, 2, NULL, 'Logaritma', '<h3><strong>Materi mengenai Logaritma adalah: </strong></h3>\r\n\r\n<ol>\r\n	<li>\r\n	<h3><strong>asdas das dasd asd asd asd </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>asdas dsa as dasd asd asd asd asdas </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>dsa dasd as asd asd asd asd asda sdas dads</strong></h3>\r\n	</li>\r\n</ol>\r\n\r\n<p>Yang bukan logaritma:</p>\r\n\r\n<ul>\r\n	<li>asdasd</li>\r\n	<li>asdasd</li>\r\n	<li>asdasdas</li>\r\n	<li>asdsad</li>\r\n</ul>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<p>&nbsp;</p>\r\n', NULL, 'fISng0xdb80', 'Teks', '2020-03-29 16:40:41', 1, 9);
+INSERT INTO `materi` VALUES (1, 3, 2, NULL, 'Logaritma', '<h3><strong>Materi mengenai Logaritma adalah: </strong></h3>\r\n\r\n<ol>\r\n	<li>\r\n	<h3><strong>asdas das dasd asd asd asd </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>asdas dsa as dasd asd asd asd asdas </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>dsa dasd as asd asd asd asd asda sdas dads</strong></h3>\r\n	</li>\r\n</ol>\r\n\r\n<p>Yang bukan logaritma:</p>\r\n\r\n<ul>\r\n	<li>asdasd</li>\r\n	<li>asdasd</li>\r\n	<li>asdasdas</li>\r\n	<li>asdsad</li>\r\n</ul>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<p>&nbsp;</p>\r\n', NULL, 'fISng0xdb80', 'Teks', '2020-03-29 16:40:41', 1, 17);
 INSERT INTO `materi` VALUES (2, 2, 2, NULL, 'ook', '<p><img alt=\"\" src=\"/new-elearning/assets/comp/kcfinder/upload/files/58015_176364669053964_980956_n.jpg\" style=\"height:240px; width:320px\" /></p>\r\n', NULL, NULL, 'Teks', '2020-04-01 23:52:59', 1, 6);
-INSERT INTO `materi` VALUES (3, 2, 2, NULL, 'Cari Uang', '<p>asasd</p>\r\n', NULL, 'fISng0xdb80', 'Teks', '2020-04-12 22:52:05', 1, 28);
+INSERT INTO `materi` VALUES (3, 2, 2, NULL, 'Cari Uang', '<p>asasd</p>\r\n', NULL, 'fISng0xdb80', 'Teks', '2020-04-12 22:52:05', 1, 29);
+INSERT INTO `materi` VALUES (4, 5, 3, NULL, 'Grafikom', '<h1>Ini adalah konten teks</h1>\r\n', NULL, 'q4xdBGZEIsY', 'Teks', '2020-06-06 01:32:24', 1, 3);
 
 -- ----------------------------
 -- Table structure for materi_kelas
@@ -373,7 +431,7 @@ CREATE TABLE `materi_kelas`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `materi_id`(`materi_id`, `kelas_id`) USING BTREE,
   INDEX `materi_id_2`(`materi_id`, `kelas_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of materi_kelas
@@ -381,6 +439,7 @@ CREATE TABLE `materi_kelas`  (
 INSERT INTO `materi_kelas` VALUES (1, 1, 11);
 INSERT INTO `materi_kelas` VALUES (2, 2, 11);
 INSERT INTO `materi_kelas` VALUES (3, 3, 11);
+INSERT INTO `materi_kelas` VALUES (4, 4, 11);
 
 -- ----------------------------
 -- Table structure for messages
@@ -456,13 +515,14 @@ CREATE TABLE `pengajar`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
   INDEX `nip_2`(`nip`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pengajar
 -- ----------------------------
 INSERT INTO `pengajar` VALUES (1, '123123123123', 'Administrator', 'Laki-laki', 'Bandung', '1980-01-01', 'Bandung', NULL, 1);
 INSERT INTO `pengajar` VALUES (2, '123123123', 'Guru 1', 'Laki-laki', 'Bandung', '1331-01-01', 'Bandung', NULL, 1);
+INSERT INTO `pengajar` VALUES (3, '123123321', 'Guru2', 'Laki-laki', 'Bandung', '1331-01-01', 'Bandung', NULL, 1);
 
 -- ----------------------------
 -- Table structure for pengaturan
