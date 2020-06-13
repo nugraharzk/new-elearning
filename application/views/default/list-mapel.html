@@ -52,7 +52,7 @@ Manajemen Matapelajaran - {{ parent() }}
                         {% endif %}
                     </td>
                     <td>
-                        <a class="btn btn-default" href="{{ site_url('mapel/edit/' ~ v.id ~ '/' ~ enurl_redirect(current_url())) }}"><i class="icon-edit"></i> Edit</a>
+                        <a class="btn btn-default" href="{{ site_url('mapel/edit/' ~ v.id) }}"><i class="icon-edit"></i> Edit</a>
                     </td>
                 </tr>
                 {% endfor %}

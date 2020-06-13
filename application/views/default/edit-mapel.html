@@ -16,7 +16,7 @@ Manajemen Matapelajaran - {{ parent() }}
             {{ get_alert('warning', get_demo_msg())|raw }}
         {% endif %}
 
-        {{ form_open('mapel/edit/' ~ mapel.id ~ '/' ~ enurl_redirect(uri_back), {'class' : 'form-horizontal row-fluid'})|raw }}
+        {{ form_open('mapel/edit/' ~ mapel.id , {'class' : 'form-horizontal row-fluid'})|raw }}
             <div class="control-group">
                 <label class="control-label">Nama <span class="text-error">*</span></label>
                 <div class="controls">

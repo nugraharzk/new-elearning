@@ -620,7 +620,9 @@ class Materi extends MY_Controller
 
         $data['materi']['download_link'] = site_url('materi/detail/'.$materi['id'].'/download');
         $session = $_SESSION['login_' . APP_PREFIX];
-        $data['materi']['siswa_id'] = $session['siswa']['login']['siswa_id'];
+        if (is_siswa()) {
+            $data['materi']['siswa_id'] = $session['siswa']['login']['siswa_id'];
+        }
 
         # ambil komentar
         $retrieve_all_komentar = $this->komentar_model->retrieve_all(20, (int)$segment_4, null, $materi['id'], 1);
