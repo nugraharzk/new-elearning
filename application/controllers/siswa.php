@@ -815,4 +815,12 @@ class Siswa extends MY_Controller
 
         $this->twig->display('jadwal-mapel.html', $data);
     }
+
+    public function delete_siswa($id)
+    {
+      $this->db->where('id', $id)->delete('siswa');
+      $this->db->where('siswa_id', $id)->delete('login');
+
+      redirect('siswa');
+    }
 }

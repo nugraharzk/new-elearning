@@ -20,10 +20,10 @@ Data Pengajar - {{ parent() }}
 
       <div class="span5">
         {# <div class="btn-group pull-right">
-          {{ anchor('pengajar/index/1', 'Aktif', {'class' : (status_id == 1) ? 'btn btn-info' : 'btn btn-default'})|raw }}
-          {{ anchor('pengajar/index/0', 'Pending '  ~ ((count_pending > 0) ? '<span class="label label-warning">' ~ count_pending  ~ '</span>'), {'class' : (status_id == 0) ? 'btn btn-info' : 'btn btn-default'})|raw }}
-          {{ anchor('pengajar/index/2', 'Blocking', {'class' : (status_id == 2) ? 'btn btn-info' : 'btn btn-default'})|raw }}
-          {{ anchor('pengajar/filter', '<i class="icon-search" style="line-height: 0px;"></i> Filter', {'class' : 'btn btn-default'})|raw }}
+          {{ anchor('orangtua/index/1', 'Aktif', {'class' : (status_id == 1) ? 'btn btn-info' : 'btn btn-default'})|raw }}
+          {{ anchor('orangtua/index/0', 'Pending '  ~ ((count_pending > 0) ? '<span class="label label-warning">' ~ count_pending  ~ '</span>'), {'class' : (status_id == 0) ? 'btn btn-info' : 'btn btn-default'})|raw }}
+          {{ anchor('orangtua/index/2', 'Blocking', {'class' : (status_id == 2) ? 'btn btn-info' : 'btn btn-default'})|raw }}
+          {{ anchor('orangtua/filter', '<i class="icon-search" style="line-height: 0px;"></i> Filter', {'class' : 'btn btn-default'})|raw }}
         </div> #}
       </div>
     </div>
@@ -32,7 +32,7 @@ Data Pengajar - {{ parent() }}
       <b><a class="as-link" data-toggle="collapse" data-target="#form-filter"><i class="icon-search"
             style="line-height: 0px;"></i> Filter</a></b>
       <div id="form-filter" class="collapse" style="margin-top: 5px;">
-        {{ form_open('pengajar/filter')|raw }}
+        {{ form_open('orangtua/filter')|raw }}
         <table class="table table-condensed" id="form-search">
           <tr>
             <th width="20%" style="border-top:none;">NIP</th>
@@ -124,7 +124,7 @@ Data Pengajar - {{ parent() }}
     {% endif %}
     <br>
 
-    {{ form_open('pengajar/index/' ~ status_id)|raw }}
+    {{ form_open('orangtua/index/' ~ status_id)|raw }}
     <table class="table table-striped">
       <thead>
         <tr>
@@ -157,29 +157,33 @@ Data Pengajar - {{ parent() }}
             <ul class="nav nav-pills" style="margin-bottom:0px;">
               {% if is_admin() == true %}
               <li><a class="btn btn-default btn-small"
-                  href="{{ site_url('pengajar/detail/' ~ status_id ~ '/' ~ v.id) }}"><i class="icon-zoom-in"></i>
+                  href="{{ site_url('orangtua/detail/' ~ status_id ~ '/' ~ v.id) }}"><i class="icon-zoom-in"></i>
                   Detail</a></li>
-              <li class="dropdown">
+              <!-- <li class="dropdown">
                 <a class="btn btn-default btn-small" href="#" id="act-{{ v.id }}" class="dropdown-toggle"
                   data-toggle="dropdown"><i class="icon-edit"></i> Edit <b class="caret"
                     style="margin-top:5px;"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="act-{{ v.id }}">
                   <li>
-                    {{ anchor('pengajar/edit_profile/' ~ status_id ~ '/' ~ v.id, 'Edit Profil', {'class' : 'pengajar-iframe-4', 'title' : 'Edit Profil Pengajar'})|raw }}
+                    {{ anchor('orangtua/edit_profile/' ~ status_id ~ '/' ~ v.id, 'Edit Profil', {'class' : 'pengajar-iframe-4', 'title' : 'Edit Profil Pengajar'})|raw }}
                   </li>
                   <li>
-                    {{ anchor('pengajar/edit_picture/' ~ status_id ~ '/' ~ v.id, 'Edit Foto', {'class' : 'pengajar-iframe-5', 'title' : 'Edit Foto Pengajar'})|raw }}
+                    {{ anchor('orangtua/edit_picture/' ~ status_id ~ '/' ~ v.id, 'Edit Foto', {'class' : 'pengajar-iframe-5', 'title' : 'Edit Foto Pengajar'})|raw }}
                   </li>
                   <li>
-                    {{ anchor('pengajar/edit_username/' ~ status_id ~ '/' ~ v.id, 'Edit Username', {'class' : 'pengajar-iframe-2', 'title' : 'Edit Username Pengajar'})|raw }}
+                    {{ anchor('orangtua/edit_username/' ~ status_id ~ '/' ~ v.id, 'Edit Username', {'class' : 'pengajar-iframe-2', 'title' : 'Edit Username Pengajar'})|raw }}
                   </li>
                   <li>
-                    {{ anchor('pengajar/edit_password/' ~ status_id ~ '/' ~ v.id, 'Edit Password', {'class' : 'pengajar-iframe-3', 'title' : 'Edit Password Pengajar'})|raw }}
+                    {{ anchor('orangtua/edit_password/' ~ status_id ~ '/' ~ v.id, 'Edit Password', {'class' : 'pengajar-iframe-3', 'title' : 'Edit Password Pengajar'})|raw }}
                   </li>
                 </ul>
+              </li> -->
+              <li>
+                <!-- <button onclick="deleterow(1)" class="btn btn-danger btn-small">Hapus</button> -->
+                <a href="#" class="btn btn-danger btn-small" onclick="deleterow({{ v.id }})"><i class="icon-trash"></i> Hapus</a>
               </li>
               {% elseif is_pengajar() == true %}
-              <li><a class="btn btn-default btn-small" href="{{ site_url('pengajar/detail/' ~ v.id) }}"><i
+              <li><a class="btn btn-default btn-small" href="{{ site_url('orangtua/detail/' ~ v.id) }}"><i
                     class="icon-zoom-in"></i> Detail</a></li>
               {% endif %}
             </ul>
@@ -221,4 +225,18 @@ Data Pengajar - {{ parent() }}
 
   </div>
 </div>
+<script type="text/javascript">
+  function deleterow(id) {
+    if (confirm('Are you sure want to delete this row?')) {
+      console.log(`Ortu with ID ${id} deleted`)
+      var url = site_url + 'orangtua/delete_orangtua/' + id
+      $.get(url, function (params) {
+        window.location.reload(true)
+      })
+    }
+    else {
+      console.log('not deleted')
+    }
+  }
+</script>
 {% endblock %}

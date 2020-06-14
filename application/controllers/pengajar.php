@@ -816,4 +816,12 @@ class Pengajar extends MY_Controller
 
         $this->twig->display('pp-jadwal-pengajar.html', $data);
     }
+
+    public function delete_pengajar($id)
+    {
+      $this->db->where('id', $id)->delete('pengajar');
+      $this->db->where('pengajar_id', $id)->delete('login');
+
+      redirect('pengajar');
+    }
 }

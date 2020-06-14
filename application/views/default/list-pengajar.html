@@ -143,7 +143,7 @@ Data Pengajar - {{ parent() }}
                         <ul class="nav nav-pills" style="margin-bottom:0px;">
                             {% if is_admin() == true %}
                             <li><a class="btn btn-default btn-small" href="{{ site_url('pengajar/detail/' ~ status_id ~ '/' ~ v.id) }}"><i class="icon-zoom-in"></i> Detail</a></li>
-                            <li class="dropdown">
+                            <!-- <li class="dropdown">
                                 <a class="btn btn-default btn-small" href="#" id="act-{{ v.id }}" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-edit"></i> Edit <b class="caret" style="margin-top:5px;"></b></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="act-{{ v.id }}">
                                     <li>{{ anchor('pengajar/edit_profile/' ~ status_id ~ '/' ~ v.id, 'Edit Profil', {'class' : 'pengajar-iframe-4', 'title' : 'Edit Profil Pengajar'})|raw }}</li>
@@ -151,6 +151,9 @@ Data Pengajar - {{ parent() }}
                                     <li>{{ anchor('pengajar/edit_username/' ~ status_id ~ '/' ~ v.id, 'Edit Username', {'class' : 'pengajar-iframe-2', 'title' : 'Edit Username Pengajar'})|raw }}</li>
                                     <li>{{ anchor('pengajar/edit_password/' ~ status_id ~ '/' ~ v.id, 'Edit Password', {'class' : 'pengajar-iframe-3', 'title' : 'Edit Password Pengajar'})|raw }}</li>
                                 </ul>
+                            </li> -->
+                            <li>
+                              <a href="#" class="btn btn-danger btn-small" onclick="deleterow({{ v.id }})"><i class="icon-trash"></i> Hapus</a>
                             </li>
                             {% elseif is_pengajar() == true %}
                             <li><a class="btn btn-default btn-small" href="{{ site_url('pengajar/detail/' ~ v.id) }}"><i class="icon-zoom-in"></i> Detail</a></li>
@@ -194,4 +197,18 @@ Data Pengajar - {{ parent() }}
 
     </div>
 </div>
+<script type="text/javascript">
+  function deleterow(id) {
+    if (confirm('Are you sure want to delete this row?')) {
+      console.log(`Ortu with ID ${id} deleted`)
+      var url = site_url + 'pengajar/delete_pengajar/' + id
+      $.get(url, function (params) {
+        window.location.reload(true)
+      })
+    }
+    else {
+      console.log('not deleted')
+    }
+  }
+</script>
 {% endblock %}
