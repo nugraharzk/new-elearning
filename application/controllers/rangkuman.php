@@ -51,13 +51,13 @@ class Rangkuman extends MY_Controller
                 $val['pembuat']['link_profil'] = site_url('pengajar/detail/'.$pengajar['id']);
             }
         }
-        if (!empty($val['siswa_id'])) {
-            $siswa = $this->siswa_model->retrieve($val['siswa_id']);
+        if (!empty($val['orangtua_id'])) {
+            $siswa = $this->orangtua_model->retrieve($val['orangtua_id']);
             $val['pembuat'] = $siswa;
             if (is_admin()) {
-                $val['pembuat']['link_profil'] = site_url('siswa/detail/'.$siswa['status_id'].'/'.$siswa['id']);
+                $val['pembuat']['link_profil'] = site_url('orangtua/detail/'.$siswa['status_id'].'/'.$siswa['id']);
             } else {
-                $val['pembuat']['link_profil'] = site_url('siswa/detail/'.$siswa['id']);
+                $val['pembuat']['link_profil'] = site_url('orangtua/detail/'.$siswa['id']);
             }
         }
 
@@ -183,6 +183,7 @@ class Rangkuman extends MY_Controller
 
         // $this->tampilkan($_SESSION['login_' . APP_PREFIX]);
         // $this->tampilkan($results);
+        // output_json($data);
         $this->twig->display('list-rangkuman.html', $data);
     }
 
@@ -231,13 +232,14 @@ class Rangkuman extends MY_Controller
                                    ->get('log_belajar a')
                                    ->result();
                                    
-        $data['materi']['siswa_id'] = get_sess_data('user','id');
         if (is_orangtua()) {
+            $data['materi']['siswa_id'] = get_sess_data('user','siswa_id');
             $data['is_orangtua'] = true;
             $data['teks'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'teks')->where('siswa_id', $data['materi']['siswa_id'])->get('log_belajar')->row();
             $data['video'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'video')->where('siswa_id', $data['materi']['siswa_id'])->get('log_belajar')->row();
         }
         if (is_pengajar()) {
+            $data['materi']['siswa_id'] = get_sess_data('user','id');
             $data['is_orangtua'] = false;
             $data['teks'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'teks')->get('log_belajar')->row();
             $data['video'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'video')->get('log_belajar')->row();
@@ -251,7 +253,7 @@ class Rangkuman extends MY_Controller
         $data['base_url'] = base_url("/");
 
         // $this->tampilkan($data);
-
+        // $this->tampilkan($_SESSION['login_' . APP_PREFIX]);
         $this->twig->display('list-detail-rangkuman.html', $data);
     }
 

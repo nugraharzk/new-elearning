@@ -229,6 +229,7 @@ class Login_model extends CI_Model
         $password    = null,
         $siswa_id    = null,
         $pengajar_id = null,
+        $orangtua_id = null,
         $is_admin    = null,
         $is_orangtua = null,
         $reset_kode  = null
@@ -250,6 +251,10 @@ class Login_model extends CI_Model
         if (!is_null($pengajar_id)) {
             $pengajar_id = (int)$pengajar_id;
             $this->db->where('pengajar_id', $pengajar_id);
+        }
+        if (!is_null($orangtua_id)) {
+            $orangtua_id = (int)$orangtua_id;
+            $this->db->where('orangtua_id', $orangtua_id);
         }
         if (!is_null($is_admin)) {
             $is_admin = (int)$is_admin;
@@ -351,7 +356,9 @@ class Login_model extends CI_Model
         $password,
         $siswa_id    = null,
         $pengajar_id = null,
-        $is_admin    = 0
+        $orangtua_id = null,
+        $is_admin    = 0,
+        $is_orangtua = 0
     ) {
         if (!is_null($siswa_id)) {
             $siswa_id = (int)$siswa_id;
@@ -366,7 +373,9 @@ class Login_model extends CI_Model
             'password'    => md5($password),
             'siswa_id'    => $siswa_id,
             'pengajar_id' => $pengajar_id,
+            'orangtua_id' => $orangtua_id,
             'is_admin'    => $is_admin,
+            'is_orangtua' => $is_orangtua,
             'reset_kode'  => null
         );
         $this->db->insert('login', $data);

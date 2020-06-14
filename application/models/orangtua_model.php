@@ -416,14 +416,11 @@ class Orangtua_model extends CI_Model
    * @return array
    * @author Almazari <almazary@gmail.com>
    */
-  public function retrieve($id = null, $nip = null, $status_id = null)
+  public function retrieve($id = null, $status_id = null)
   {
     if (!is_null($id)) {
       $id = (int) $id;
       $this->db->where('id', $id);
-    } else {
-      $nip = (int) $nip;
-      $this->db->where('nip', $nip);
     }
 
     if (!is_null($status_id)) {
@@ -431,7 +428,7 @@ class Orangtua_model extends CI_Model
       $this->db->where('status_id', $status_id);
     }
 
-    $result = $this->db->get('pengajar', 1);
+    $result = $this->db->get('orangtua', 1);
     return $result->row_array();
   }
 
@@ -487,11 +484,9 @@ class Orangtua_model extends CI_Model
    * @author Almazari <almazary@gmail.com>
    */
   public function create(
-    $nip          = null,
     $nama,
+    $siswa_id,
     $jenis_kelamin,
-    $tempat_lahir = null,
-    $tgl_lahir    = null,
     $alamat       = null,
     $foto         = null,
     $status_id    = 0
@@ -499,16 +494,14 @@ class Orangtua_model extends CI_Model
     $status_id = (int) $status_id;
 
     $data = array(
-      'nip'           => $nip,
       'nama'          => $nama,
+      'siswa_id'      => $siswa_id,
       'jenis_kelamin' => $jenis_kelamin,
-      'tempat_lahir'  => $tempat_lahir,
-      'tgl_lahir'     => $tgl_lahir,
       'alamat'        => $alamat,
       'foto'          => $foto,
       'status_id'     => $status_id
     );
-    $this->db->insert('pengajar', $data);
+    $this->db->insert('orangtua', $data);
     return $this->db->insert_id();
   }
 }

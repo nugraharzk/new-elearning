@@ -27,7 +27,10 @@ class Login extends MY_Controller
                 } elseif (!empty($get_login['siswa_id'])) {
                     $user = $this->siswa_model->retrieve($get_login['siswa_id']);
 
-                    $user_type = empty($get_login['is_orangtua']) ? 'siswa' : 'orangtua';
+                } elseif (!empty($get_login['orangtua_id'])) {
+                    $user = $this->orangtua_model->retrieve($get_login['orangtua_id']);
+
+                    $user_type = 'orangtua';
                 }
 
                 # cek jika user berstatus tidak aktif

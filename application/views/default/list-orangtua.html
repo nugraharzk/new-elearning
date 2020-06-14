@@ -15,7 +15,7 @@ Data Pengajar - {{ parent() }}
     {% if is_admin() == true %}
     <div class="row-fluid">
       <div class="span7">
-        <a href="{{ site_url('pengajar/add/' ~ status_id) }}" class="btn btn-primary">Tambah Orang Tua</a>
+        <a href="{{ site_url('orangtua/add/' ~ status_id) }}" class="btn btn-primary">Tambah Orang Tua</a>
       </div>
 
       <div class="span5">
@@ -151,10 +151,6 @@ Data Pengajar - {{ parent() }}
             <img style="height:40px;width:40px; margin-right: 10px;" class="img-polaroid img-circle pull-left"
               src="{{ get_url_image_pengajar(v.foto, 'medium', v.jenis_kelamin) }}">
             <b>{{ v.nama }} {{ ((v.nip is not empty) ? '<span class="text-muted">(' ~ v.nip ~ ')</span>')|raw }}</b>
-            {% set is_admin =  get_row_data('login_model', 'retrieve', [null, null, null, null, v.id], 'is_admin') %}
-            {% if is_admin == 1 %}
-            <span class="label label-warning">Administrator</span>
-            {% endif %}
             <br><b>Alamat :</b> {{ v.alamat }}
           </td>
           <td>

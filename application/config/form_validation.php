@@ -1048,3 +1048,41 @@ $config['pengumuman'] = array(
         'rules' => 'trim|xss_clean|numeric'
     ),
 );
+
+$config['orangtua/add'] = array(
+    array(
+        'field' => 'nama',
+        'label' => 'Nama',
+        'rules' => 'required|trim|xss_clean'
+    ),
+    array(
+        'field' => 'siswa_id',
+        'label' => 'Nama Siswa',
+        'rules' => 'required|trim|xss_clean'
+    ),
+    array(
+        'field' => 'jenis_kelamin',
+        'label' => 'Jenis Kelamin',
+        'rules' => 'required|trim|xss_clean'
+    ),
+    array(
+        'field' => 'alamat',
+        'label' => 'Alamat',
+        'rules' => 'trim|xss_clean'
+    ),
+    array(
+        'field' => 'username',
+        'label' => 'Username',
+        'rules' => 'required|trim|xss_clean|valid_email|is_unique[login.username]'
+    ),
+    array(
+        'field' => 'password',
+        'label' => 'Password',
+        'rules' => 'required|trim|xss_clean|alpha_numeric'
+    ),
+    array(
+        'field' => 'password2',
+        'label' => 'Ulangi Password',
+        'rules' => 'required|matches[password]'
+    ),
+);

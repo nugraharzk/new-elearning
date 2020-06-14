@@ -59,7 +59,7 @@ class MY_Controller extends CI_Controller
         $this->load->library(array('session', 'form_validation', 'pager', 'parser', 'image_lib', 'upload', 'twig', 'user_agent', 'email', 'menu'));
 
         # load saja semua model
-        $this->load->model(array('config_model', 'kelas_model', 'login_model', 'mapel_model', 'materi_model', 'orangtua_model', 'pengajar_model', 'siswa_model', 'tugas_model', 'msg_model', 'pengumuman_model', 'komentar_model'));
+        $this->load->model(array('config_model', 'kelas_model', 'login_model', 'mapel_model', 'materi_model', 'orangtua_model', 'pengajar_model', 'siswa_model', 'tugas_model', 'msg_model', 'pengumuman_model', 'komentar_model', 'orangtua_model'));
 
         # delimiters form validation
         $this->form_validation->set_error_delimiters('<span class="text-error"><i class="icon-info-sign"></i> ', '</span>');
@@ -409,6 +409,14 @@ class MY_Controller extends CI_Controller
                 $user['link_profil'] = site_url('pengajar/detail/' . $user['status_id'] . '/' . $user['id']);
             } else {
                 $user['link_profil'] = site_url('pengajar/detail/' . $user['id']);
+            }
+            $user['link_image'] = get_url_image_pengajar($user['foto'], 'medium', $user['jenis_kelamin']);
+        } elseif (!empty($login['orangtua_id'])) {
+            $user = $this->orangtua_model->retrieve($login['orangtua_id']);
+            if (is_admin()) {
+                $user['link_profil'] = site_url('orangtua/detail/' . $user['status_id'] . '/' . $user['id']);
+            } else {
+                $user['link_profil'] = site_url('orangtua/detail/' . $user['id']);
             }
             $user['link_image'] = get_url_image_pengajar($user['foto'], 'medium', $user['jenis_kelamin']);
         }

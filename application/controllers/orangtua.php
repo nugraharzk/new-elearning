@@ -73,4 +73,119 @@ class Orangtua extends MY_Controller
 
     $this->twig->display('list-orangtua.html', $data);
   }
+
+  function add($segment_3 = '')
+  {
+      # harus login sebagai admin
+      if (!is_admin()) {
+        redirect('welcome');
+      }
+
+      $status_id = $segment_3;
+      if ($status_id == '' OR $status_id > 3) {
+        redirect('orangtua/index/1');
+      }
+
+      $data['status_id'] = $status_id;
+
+      $config['upload_path']   = get_path_image();
+      $config['allowed_types'] = 'jpg|jpeg|png';
+      $config['max_size']      = '0';
+      $config['max_width']     = '0';
+      $config['max_height']    = '0';
+      $config['file_name']     = 'orangtua-'.url_title($this->input->post('nama', TRUE), '-', true);
+      $this->upload->initialize($config);
+
+      if (!empty($_FILES['userfile']['tmp_name']) AND !$this->upload->do_upload()) {
+          $data['error_upload'] = '<span class="text-error">'.$this->upload->display_errors().'</span>';
+          $error_upload = true;
+      } else {
+          $data['error_upload'] = '';
+          $error_upload = false;
+      }
+
+      if ($this->form_validation->run('orangtua/add') == TRUE AND !$error_upload) {
+          $nama          = $this->input->post('nama', TRUE);
+          $siswa_id      = $this->input->post('siswa_id', TRUE);
+          $jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
+          $alamat        = $this->input->post('alamat', TRUE);
+          $username      = $this->input->post('username', TRUE);
+          $password      = $this->input->post('password2', TRUE);
+          
+          if (!empty($_FILES['userfile']['tmp_name'])) {
+            $upload_data = $this->upload->data();
+
+            # create thumb small
+            $this->create_img_thumb(
+                get_path_image($upload_data['file_name']),
+                '_small',
+                '50',
+                '50'
+            );
+
+            # create thumb medium
+            $this->create_img_thumb(
+                get_path_image($upload_data['file_name']),
+                '_medium',
+                '150',
+                '150'
+            );
+
+            $foto = $upload_data['file_name'];
+        } else {
+            $foto = null;
+        }
+
+          # simpan data orang tua
+          $orangtua_id = $this->orangtua_model->create(
+              $nama,
+              $siswa_id,
+              $jenis_kelamin,
+              $alamat,
+              $foto,
+              1
+          );
+
+          # simpan data login
+          $this->login_model->create(
+              $username,
+              $password,
+              null,
+              null,
+              $orangtua_id,
+              $is_admin,
+              1
+          );
+
+          $this->session->set_flashdata('orangtua', get_alert('success', 'Data Pengajar berhasil disimpan.'));
+          redirect('orangtua/index/1');
+
+      } else {
+        $upload_data = $this->upload->data();
+        if (!empty($upload_data) AND is_file(get_path_image($upload_data['file_name']))) {
+            unlink(get_path_image($upload_data['file_name']));
+        }
+      }
+
+      $siswa = $this->db->get('siswa')->result();
+      $orangtua = $this->db->get('orangtua')->result();
+      
+      $available = [];
+      $found = false;
+      foreach ($siswa as $row) {
+        $found = false;
+        foreach ($orangtua as $col) {
+          if ($row->id == $col->siswa_id) {
+            $found = true;
+          }
+        }
+        if ($found == false) {
+          array_push($available, $row);
+        }
+      }
+      $data['siswa_available'] = $available;
+
+      // output_json($available);
+      $this->twig->display('tambah-orangtua.html', $data);
+  }
 }

@@ -91,6 +91,16 @@ class Welcome extends MY_Controller
                 'tgl_tutup >='    => date('Y-m-d'),
                 'tampil_pengajar' => 1
             );
+
+            $id = get_sess_data('user', 'siswa_id');
+            $siswa = $this->db->where('id', $id)->get('siswa')->row();
+            $kelas_siswa = $this->db->where('siswa_id', $id)->get('kelas_siswa')->row();
+            $kelas = $this->db->where('id', $kelas_siswa->kelas_id)->get('kelas')->row();
+            // output_json($siswa);
+            // output_json($kelas_siswa[0]->kelas_id);
+            $data['siswa']['nama'] = $siswa->nama;
+            $data['siswa']['kelas'] = $kelas->nama;
+            // output_json($data);
         }
 
         if (is_admin()) {
@@ -121,6 +131,7 @@ class Welcome extends MY_Controller
         $data['pengumuman'] = $this->pengumuman_model->retrieve_all(10, 1, $where_pengumuman, false);
 
         $this->twig->display('welcome.html', $data);
+        // output_json($_SESSION['login_' . APP_PREFIX]);
     }
 
     function pengaturan()

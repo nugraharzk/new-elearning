@@ -514,7 +514,7 @@ function get_url_image_pengajar($img = '', $size = 'medium', $jk = 'Laki-laki') 
  * @return string url
  */
 function get_url_image_session($img = '', $size = 'medium', $jk = 'Laki-laki') {
-    if (is_pengajar() OR is_admin()) {
+    if (is_pengajar() OR is_admin() OR is_orangtua()) {
         return get_url_image_pengajar($img, $size, $jk);
     } elseif (is_siswa()) {
         return get_url_image_siswa($img, $size, $jk);
