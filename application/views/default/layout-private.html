@@ -105,17 +105,19 @@
     <script type="text/javascript">
         var teks = "{{ teks.durasi }}";
         var video = "{{ video.durasi }}";
+        var audio = "{{ audio.durasi }}";
         var ctx = document.getElementById('myChart');
         var myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Teks', 'Video'],
+                labels: ['Teks', 'Video', 'Audio'],
                 datasets: [{
                     label: 'Sum of Learning Time',
-                    data: [teks, video],
+                    data: [teks, video, audio],
                     backgroundColor: [
                         'green',
                         'red',
+                        'blue'
                     ],
                     borderWidth: 1
                 }]
@@ -137,22 +139,24 @@
             var materiId = "{{ materi.id }}";
             var teks1 = 0;
             var video1 = 0;
+            var audio1 = 0;
             var url = baseUrl + 'rangkuman/getrow/' + id + '/' + materiId
-            console.log(url)
             $.get(url, function (res) {
                 teks1 = res.teks.durasi
                 video1 = res.video.durasi
+                audio1 = res.audio.durasi
                 var cts = document.getElementById('detailChart');
                 var myChart = new Chart(cts, {
                     type: 'pie',
                     data: {
-                        labels: ['Teks', 'Video'],
+                        labels: ['Teks', 'Video', 'Audio'],
                         datasets: [{
                             label: 'Sum of Learning Time',
-                            data: [teks1, video1],
+                            data: [teks1, video1, audio1],
                             backgroundColor: [
                                 'green',
                                 'red',
+                                'blue'
                             ],
                             borderWidth: 1
                         }]

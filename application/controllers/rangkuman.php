@@ -237,16 +237,19 @@ class Rangkuman extends MY_Controller
             $data['is_orangtua'] = true;
             $data['teks'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'teks')->where('siswa_id', $data['materi']['siswa_id'])->get('log_belajar')->row();
             $data['video'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'video')->where('siswa_id', $data['materi']['siswa_id'])->get('log_belajar')->row();
+            $data['audio'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'audio')->where('siswa_id', $data['materi']['siswa_id'])->get('log_belajar')->row();
         }
         if (is_pengajar()) {
             $data['materi']['siswa_id'] = get_sess_data('user','id');
             $data['is_orangtua'] = false;
             $data['teks'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'teks')->get('log_belajar')->row();
             $data['video'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'video')->get('log_belajar')->row();
+            $data['audio'] = $this->db->select_sum('durasi')->where('materi_id', $data['materi']['id'])->where('tipe', 'audio')->get('log_belajar')->row();
         }
 
         $data['teks'] = $data['teks']->durasi !== null ? $data['teks'] : 0;
         $data['video'] = $data['video']->durasi !== null ? $data['video'] : 0;
+        $data['audio'] = $data['audio']->durasi !== null ? $data['audio'] : 0;
 
         $data['jquery'] = base_url("/assets/comp/jquery/jquery.min.js");
         $data['chartjs'] = base_url("/assets/comp/chartjs/Chart.min.js");
@@ -271,8 +274,15 @@ class Rangkuman extends MY_Controller
                          ->where('tipe', 'video')
                          ->get('log_belajar')
                          ->row();
+        $data['audio'] = $this->db->select_sum('durasi')
+                         ->where('siswa_id', $id)
+                         ->where('materi_id', $materiId)
+                         ->where('tipe', 'audio')
+                         ->get('log_belajar')
+                         ->row();
         $data['teks'] = $data['teks']->durasi !== null ? $data['teks'] : 0;
         $data['video'] = $data['video']->durasi !== null ? $data['video'] : 0;
+        $data['audio'] = $data['audio']->durasi !== null ? $data['audio'] : 0;
         $this->tampilkan($data);
     }
 

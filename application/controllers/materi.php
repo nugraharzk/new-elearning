@@ -770,10 +770,22 @@ class Materi extends MY_Controller
 
         $data['type'] = $segment_4;
 
+        if ($data['type'] == 'audio') {
+            $data['audio_source'] = $this->config->item('base_url') . 'userfiles/files/sound.mp3';
+        }
+
+        if (is_siswa()) {
+            $data['is_siswa'] = true;
+        } else {
+            $data['is_siswa'] = false;
+        }
+
         $text = "/materi/detail/" . $segment_3 . "/teks";
         $video = "/materi/detail/" . $segment_3 . "/video";
+        $audio = "/materi/detail/" . $segment_3 . "/audio";
         $data['text_url'] = base_url($text);
         $data['video_url'] = base_url($video);
+        $data['audio_url'] = base_url($audio);
 
         // $this->tampilkan($data);
 

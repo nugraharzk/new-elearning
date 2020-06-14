@@ -27,6 +27,7 @@ class Login extends MY_Controller
                 } elseif (!empty($get_login['siswa_id'])) {
                     $user = $this->siswa_model->retrieve($get_login['siswa_id']);
 
+                    $user_type = 'siswa';
                 } elseif (!empty($get_login['orangtua_id'])) {
                     $user = $this->orangtua_model->retrieve($get_login['orangtua_id']);
 
@@ -86,6 +87,7 @@ class Login extends MY_Controller
                 $_SESSION['login_' . APP_PREFIX] = $data_session;
 
                 redirect('welcome');
+                // output_json($data_session);
             }
         }
 
