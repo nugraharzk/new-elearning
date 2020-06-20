@@ -45,10 +45,11 @@
                     {% elseif type == 'audio' %}
                         <br />
                         <center>
-                            <audio controls>
-                                <source src="{{ audio_source }}" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
+                            <div data-video="{{ materi.youtube_id }}"
+                                data-autoplay="0"
+                                data-loop="1"
+                                id="youtube-audio">
+                            </div>
                         </center>
                     {% endif %}
 
@@ -116,6 +117,8 @@
     </div>
 </div>
 <script src="{{ jquery }}"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>
 <script type="text/javascript">
     $(function()
     {
