@@ -11,7 +11,7 @@
  Target Server Version : 100406
  File Encoding         : 65001
 
- Date: 15/06/2020 00:14:05
+ Date: 01/07/2020 23:05:50
 */
 
 SET NAMES utf8mb4;
@@ -82,7 +82,7 @@ CREATE TABLE `kelas_siswa`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `kelas_id`(`kelas_id`, `siswa_id`) USING BTREE,
   INDEX `kelas_id_2`(`kelas_id`, `siswa_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of kelas_siswa
@@ -90,6 +90,7 @@ CREATE TABLE `kelas_siswa`  (
 INSERT INTO `kelas_siswa` VALUES (1, 12, 1, 1);
 INSERT INTO `kelas_siswa` VALUES (2, 12, 2, 1);
 INSERT INTO `kelas_siswa` VALUES (3, 4, 3, 1);
+INSERT INTO `kelas_siswa` VALUES (4, 13, 4, 1);
 
 -- ----------------------------
 -- Table structure for komentar
@@ -125,7 +126,7 @@ CREATE TABLE `log_belajar`  (
   `tipe` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of log_belajar
@@ -152,6 +153,9 @@ INSERT INTO `log_belajar` VALUES (47, 4, 0, 1, 100, 'audio', '2020-06-14 19:51:4
 INSERT INTO `log_belajar` VALUES (48, 3, 0, 0, 10, 'audio', '2020-06-14 19:55:20.356744');
 INSERT INTO `log_belajar` VALUES (49, 3, 0, 0, 188, 'audio', '2020-06-14 20:04:40.988767');
 INSERT INTO `log_belajar` VALUES (50, 4, 0, 1, 1, 'audio', '2020-06-14 20:11:54.612690');
+INSERT INTO `log_belajar` VALUES (51, 3, 0, 1, 3, 'video', '2020-07-01 23:04:23.407379');
+INSERT INTO `log_belajar` VALUES (52, 3, 0, 1, 9, 'audio', '2020-07-01 23:04:32.367116');
+INSERT INTO `log_belajar` VALUES (53, 5, 0, 1, 9, 'video', '2020-07-01 23:05:21.452217');
 
 -- ----------------------------
 -- Table structure for login
@@ -170,7 +174,7 @@ CREATE TABLE `login`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`, `siswa_id`, `pengajar_id`) USING BTREE,
   INDEX `username_2`(`username`, `siswa_id`, `pengajar_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of login
@@ -181,6 +185,8 @@ INSERT INTO `login` VALUES (3, 'siswa1@email.com', '0192023a7bbd73250516f069df18
 INSERT INTO `login` VALUES (4, 'siswa2@email.com', '0192023a7bbd73250516f069df18b500', 2, NULL, NULL, 0, 0, NULL);
 INSERT INTO `login` VALUES (5, 'guru2@email.com', '0192023a7bbd73250516f069df18b500', NULL, 3, NULL, 0, 0, NULL);
 INSERT INTO `login` VALUES (6, 'orangtua1@email.com', '0192023a7bbd73250516f069df18b500', NULL, NULL, 1, 0, 1, NULL);
+INSERT INTO `login` VALUES (10, 'siswa3@email.com', '0192023a7bbd73250516f069df18b500', 4, NULL, NULL, 0, 0, NULL);
+INSERT INTO `login` VALUES (11, 'orangtua3@email.com', '0192023a7bbd73250516f069df18b500', NULL, NULL, 4, 0, 1, NULL);
 
 -- ----------------------------
 -- Table structure for login_log
@@ -196,7 +202,7 @@ CREATE TABLE `login_log`  (
   INDEX `login_id`(`login_id`) USING BTREE,
   INDEX `login_id_2`(`login_id`) USING BTREE,
   INDEX `login_id_3`(`login_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 192 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 199 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of login_log
@@ -392,6 +398,13 @@ INSERT INTO `login_log` VALUES (188, 2, '2020-06-14 19:54:48', '{\"is_mobile\":0
 INSERT INTO `login_log` VALUES (189, 2, '2020-06-14 19:55:33', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.97\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.97 Safari\\/537.36\",\"ip\":\"::1\"}', 1592139800);
 INSERT INTO `login_log` VALUES (190, 4, '2020-06-14 20:02:21', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.97\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.97 Safari\\/537.36\",\"ip\":\"::1\"}', 1592139843);
 INSERT INTO `login_log` VALUES (191, 3, '2020-06-14 20:05:25', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.97\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.97 Safari\\/537.36\",\"ip\":\"::1\"}', 1592141609);
+INSERT INTO `login_log` VALUES (192, 6, '2020-06-15 21:29:57', '{\"is_mobile\":0,\"browser\":\"Firefox 77.0\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko\\/20100101 Firefox\\/77.0\",\"ip\":\"127.0.0.1\"}', 1592231397);
+INSERT INTO `login_log` VALUES (193, 3, '2020-06-20 12:18:34', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.106\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.106 Safari\\/537.36\",\"ip\":\"::1\"}', 1592630197);
+INSERT INTO `login_log` VALUES (194, 1, '2020-06-20 12:19:08', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.106\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.106 Safari\\/537.36\",\"ip\":\"::1\"}', 1592630323);
+INSERT INTO `login_log` VALUES (195, 11, '2020-06-20 12:20:48', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.106\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.106 Safari\\/537.36\",\"ip\":\"::1\"}', 1592630455);
+INSERT INTO `login_log` VALUES (196, 3, '2020-06-20 18:57:46', '{\"is_mobile\":0,\"browser\":\"Chrome 83.0.4103.106\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/83.0.4103.106 Safari\\/537.36\",\"ip\":\"::1\"}', 1592654314);
+INSERT INTO `login_log` VALUES (197, 2, '2020-07-01 22:54:51', '{\"is_mobile\":0,\"browser\":\"Firefox 77.0\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko\\/20100101 Firefox\\/77.0\",\"ip\":\"127.0.0.1\"}', 1593619329);
+INSERT INTO `login_log` VALUES (198, 3, '2020-07-01 23:04:12', '{\"is_mobile\":0,\"browser\":\"Firefox 77.0\",\"platform\":\"Unknown Windows OS\",\"agent_string\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko\\/20100101 Firefox\\/77.0\",\"ip\":\"127.0.0.1\"}', 1593619521);
 
 -- ----------------------------
 -- Table structure for mapel
@@ -464,6 +477,7 @@ CREATE TABLE `materi`  (
   `konten` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `file` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `youtube_id` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `audio_id` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `jenis_materi` enum('Teks','Video','Audio') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'Teks',
   `tgl_posting` datetime(0) NOT NULL,
   `publish` tinyint(1) NOT NULL DEFAULT 0,
@@ -471,15 +485,16 @@ CREATE TABLE `materi`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `mapel_id`(`mapel_id`, `pengajar_id`, `siswa_id`) USING BTREE,
   INDEX `mapel_id_2`(`mapel_id`, `pengajar_id`, `siswa_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of materi
 -- ----------------------------
-INSERT INTO `materi` VALUES (1, 3, 2, NULL, 'Logaritma', '<h3><strong>Materi mengenai Logaritma adalah: </strong></h3>\r\n\r\n<ol>\r\n	<li>\r\n	<h3><strong>asdas das dasd asd asd asd </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>asdas dsa as dasd asd asd asd asdas </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>dsa dasd as asd asd asd asd asda sdas dads</strong></h3>\r\n	</li>\r\n</ol>\r\n\r\n<p>Yang bukan logaritma:</p>\r\n\r\n<ul>\r\n	<li>asdasd</li>\r\n	<li>asdasd</li>\r\n	<li>asdasdas</li>\r\n	<li>asdsad</li>\r\n</ul>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<p>&nbsp;</p>\r\n', NULL, 'fISng0xdb80', 'Teks', '2020-03-29 16:40:41', 1, 14);
-INSERT INTO `materi` VALUES (2, 2, 2, NULL, 'ook', '<p><img alt=\"\" src=\"/new-elearning/assets/comp/kcfinder/upload/files/58015_176364669053964_980956_n.jpg\" style=\"height:240px; width:320px\" /></p>\r\n', NULL, NULL, 'Teks', '2020-04-01 23:52:59', 1, 25);
-INSERT INTO `materi` VALUES (3, 2, 2, NULL, 'Cari Uang', '<p>asasddsdaasdasd</p>\r\n\r\n<p><img alt=\"\" src=\"/new-elearning/assets/comp/kcfinder/upload/files/7-2-flowers-vectors-png.png\" style=\"height:137px; width:200px\" /></p>\r\n', NULL, 'fISng0xdb80', 'Teks', '2020-06-13 22:03:47', 1, 54);
-INSERT INTO `materi` VALUES (4, 3, 3, NULL, 'Desain Visual', '<h1>Ini Konten Teks</h1>\r\n', NULL, 'AN7q7EUUqGU', 'Teks', '2020-06-04 11:25:50', 1, 19);
+INSERT INTO `materi` VALUES (1, 3, 2, NULL, 'Logaritma', '<h3><strong>Materi mengenai Logaritma adalah: </strong></h3>\r\n\r\n<ol>\r\n	<li>\r\n	<h3><strong>asdas das dasd asd asd asd </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>asdas dsa as dasd asd asd asd asdas </strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>dsa dasd as asd asd asd asd asda sdas dads</strong></h3>\r\n	</li>\r\n</ol>\r\n\r\n<p>Yang bukan logaritma:</p>\r\n\r\n<ul>\r\n	<li>asdasd</li>\r\n	<li>asdasd</li>\r\n	<li>asdasdas</li>\r\n	<li>asdsad</li>\r\n</ul>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<p>&nbsp;</p>\r\n', NULL, 'fISng0xdb80', NULL, 'Teks', '2020-03-29 16:40:41', 1, 14);
+INSERT INTO `materi` VALUES (2, 2, 2, NULL, 'ook', '<p><img alt=\"\" src=\"/new-elearning/assets/comp/kcfinder/upload/files/58015_176364669053964_980956_n.jpg\" style=\"height:240px; width:320px\" /></p>\r\n', NULL, NULL, NULL, 'Teks', '2020-04-01 23:52:59', 1, 25);
+INSERT INTO `materi` VALUES (3, 2, 2, NULL, 'Cari Uang', '<p>asasddsdaasdasd</p>\r\n\r\n<p><img alt=\"\" src=\"/new-elearning/assets/comp/kcfinder/upload/files/7-2-flowers-vectors-png.png\" style=\"height:137px; width:200px\" /></p>\r\n', NULL, 'fISng0xdb80', 'fISng0xdb81', 'Teks', '2020-07-01 23:02:54', 1, 55);
+INSERT INTO `materi` VALUES (4, 3, 3, NULL, 'Desain Visual', '<h1>Ini Konten Teks</h1>\r\n', NULL, 'AN7q7EUUqGU', 'AN7q7EUUqGU', 'Teks', '2020-06-04 11:25:50', 1, 20);
+INSERT INTO `materi` VALUES (5, 1, 2, NULL, 'Materi Terakhir', '<p>OK</p>\r\n', NULL, 'RtkkxKXjowI', NULL, 'Teks', '2020-07-01 23:03:56', 1, 4);
 
 -- ----------------------------
 -- Table structure for materi_kelas
@@ -492,7 +507,7 @@ CREATE TABLE `materi_kelas`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `materi_id`(`materi_id`, `kelas_id`) USING BTREE,
   INDEX `materi_id_2`(`materi_id`, `kelas_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of materi_kelas
@@ -501,6 +516,7 @@ INSERT INTO `materi_kelas` VALUES (1, 1, 11);
 INSERT INTO `materi_kelas` VALUES (2, 2, 11);
 INSERT INTO `materi_kelas` VALUES (3, 3, 11);
 INSERT INTO `materi_kelas` VALUES (4, 4, 11);
+INSERT INTO `materi_kelas` VALUES (5, 5, 11);
 
 -- ----------------------------
 -- Table structure for messages
@@ -555,12 +571,13 @@ CREATE TABLE `orangtua`  (
   `created_at` datetime(0) NOT NULL DEFAULT current_timestamp(0) ON UPDATE CURRENT_TIMESTAMP(0),
   `updated_at` datetime(0) NOT NULL DEFAULT current_timestamp(0) ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orangtua
 -- ----------------------------
 INSERT INTO `orangtua` VALUES (1, 1, 'Orang Tua 1', 'Laki-laki', 'Bandung', NULL, 1, '2020-06-14 14:40:55', '2020-06-14 14:40:55');
+INSERT INTO `orangtua` VALUES (4, 2, 'dsad', 'Laki-laki', 'Bandung', NULL, 1, '2020-06-20 12:20:40', '2020-06-20 12:20:40');
 
 -- ----------------------------
 -- Table structure for pengajar
@@ -681,13 +698,14 @@ CREATE TABLE `siswa`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `nis`(`nis`, `nama`, `status_id`) USING BTREE,
   INDEX `nis_2`(`nis`, `nama`, `status_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of siswa
 -- ----------------------------
 INSERT INTO `siswa` VALUES (1, '1233212123', 'Rizki Nugraha', 'Laki-laki', 'Bandung', '1331-01-01', 'ISLAM', 'Bandung', 2015, 'siswa-rizki-nugraha-1233212123.png', 1);
 INSERT INTO `siswa` VALUES (2, '1233212122', 'Rizkis Nugrahas', 'Laki-laki', 'Bandung', '1331-01-01', 'ISLAM', 'Bandung', 2015, 'siswa-rizki-nugraha-1233212123.png', 1);
+INSERT INTO `siswa` VALUES (4, '32223', 'asdasd', 'Laki-laki', 'Bandung', '1223-08-10', 'KATOLIK', 'Bandung', 2112, NULL, 1);
 
 -- ----------------------------
 -- Table structure for tugas

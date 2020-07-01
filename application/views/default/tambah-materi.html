@@ -49,9 +49,15 @@ Tambah Materi - {{ parent() }}
             </div>
             {% if type == 'tertulis' %}
             <div class="control-group">
-                <label class="control-label">Link Video <span class="text-error">*</span></label>
+                <label class="control-label">Link <b>Video</b> <span class="text-error">*</span></label>
                 <div class="controls">
                     <input type="text" name="youtube_id" id="video" placeholder="12 Digit ID Video Youtube" class="span12">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Link <b>Audio</b> <span class="text-error">*</span></label>
+                <div class="controls">
+                    <input type="text" name="audio_id" id="audio" placeholder="12 Digit ID Audio Youtube" class="span12">
                 </div>
             </div>
             <div class="control-group">

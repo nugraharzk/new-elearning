@@ -297,6 +297,7 @@ class Materi_model extends CI_Model
         $judul,
         $konten  = null,
         $video  = null,
+        $audio  = null,
         $file    = null,
         $publish = 1
     ) {
@@ -311,6 +312,7 @@ class Materi_model extends CI_Model
             'judul'       => $judul,
             'konten'      => $konten,
             'youtube_id'  => $video,
+            'audio_id'    => $audio,
             'file'        => $file,
             'tgl_posting' => date('Y-m-d H:i:s'),
             'publish'     => $publish

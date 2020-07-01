@@ -55,6 +55,12 @@ Edit Materi - {{ parent() }}
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label">Link Audio <span class="text-error">*</span></label>
+                <div class="controls">
+                    <input type="text" value="{{ materi.audio_id }}" name="audio_id" id="audio" placeholder="12 Digit ID Audio Youtube" class="span12">
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label">Konten <span class="text-error">*</span></label>
                 <div class="controls">
                     <textarea name="konten" id="konten" class="texteditor">{{ set_value('konten', materi.konten)|raw }}</textarea>
